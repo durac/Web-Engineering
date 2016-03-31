@@ -6,7 +6,7 @@
 		<meta name="author" content="Gruppe 57"/>
 		<meta name="description" content="Registrierungsseite für BIG BID"/>
 		<meta name="language" content="de-AT" />
-		<title xml:lang="de">BIG BID - Registrieren</title>
+		<title xml:lang="de">BIG BID - Registrierung</title>
 		<link rel="stylesheet" type="text/css" href="./styles/screen.css"/>
 		<script type="text/javascript" src="./scripts/jquery.js"></script>
 		<script type="text/javascript" src="./scripts/framework.js"></script>
@@ -15,9 +15,96 @@
 	
 		<script type="text/javascript">
 			//<![CDATA[
-      
+				
 			//]]>
 		</script>
-	
+		
+		<!-- accessibility -->
+		<h1 class="accessibility">BIG Bid Regsitrierung</h1>
+		<h2 class="accessibility">Seitennavigation</h2>
+        <ul class="accessibility">
+			<li><a href="#navigation" title="Skip to navigation" accesskey="n">Springe zu Navigation</a></li>
+			<li><a href="#main" title="Skip to content" accesskey="i">Springe zu Inhalt</a></li>
+		</ul>
+		<!-- end accessibility -->
+		
+		<header>
+			<img src="./images/big-logo-small.png" alt="BIG-Logo"> BIG Bid
+			<h2 class="accessibility" id="navigation">Navigation</h2>
+			<ul>
+				<li><a href="register.html">Einloggen</a></li>
+			</ul> 
+		</header>
+		<main id="main">
+			<h2 class="accessibility">Inhalt</h2>
+			<article>
+				<h3>Registrieren</h3>
+				<form action="#" method="post" id="registrationform">
+					<h4>Pers&ouml;nliche Daten</h4>
+					<div class="block">
+						<div class="row">
+							<label for="title">Anrede*</label>
+							<select name="title" id="title">
+								<option value="Frau" selected="selected">Frau</option>
+								<option value="Herr">Herr</option>
+							</select>
+						</div>
+						<div class="row">
+							<label for="forename">Vorname*</label>
+							<input type="text" id="forename" name="forename" />
+						</div>
+						<div class="row">
+							<label for="lastname">Nachname*</label>
+							<input type="text" id="lastname" name="lastname" />
+						</div>
+						<div class="row">
+							<label for="dob">Geburtsdatum*</label>
+							<input type="text" id="dob" name="birthdate" />
+							<span id="dobvalidation"></span>
+						</div>
+						<div class="row">
+							<label for="email">Email*</label>
+							<input type="text" id="email" name="email" />
+							<span id="emailvalidation"></span>
+						</div>
+						<div class="row">
+							<label for="password">Passwort*</label>
+							<input type="password" id="password" name="password" />
+							<span id="passvalidation"></span>
+						</div>
+					</div>
+					<h4>Versandadresse</h4>
+					<div class="block">
+						<div class="row">
+							<label for="street">Stra&szlig;e/Hausnummer</label>
+							<input type="text" id="street" name="street" />
+						</div>
+						<div class="row">
+							<label for="city">PLZ/Ort</label>
+							<input type="text" id="city" name="city" /> 
+						</div>
+						<div class="row">
+							<label for="country">Land</label>
+							<select name="country" id="title">
+								<option value=""></option>
+								<option value="Oesterreich">&Ouml;sterreich</option>
+								<option value="Deutschland">Deutschland</option>
+								<option value="Deutschland">Schweiz</option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<input type="checkbox" name="AGB"/> Mit meiner Anmeldung akzeptiere ich die AGB.*
+					</div>
+					<div class="row">
+						<input type="submit" id="submit" disabled="disabled" value="Registrieren"/>  
+					</div>
+					<div class="row">
+						Mit * gekennzeichnete Felder sind Pflichtfelder.
+					</div>
+				</form>
+			</article>
+		</main>
+		<footer>&copy; 2016 BIG Bid</footer>
 	</body>
 </html>
