@@ -16,13 +16,26 @@
 		<script type="text/javascript">
 			//<![CDATA[
 			$(document).ready(function() {
+				$("#submit").prop("disabled",true);
+				if(hasNativeDateInput()){
+					console.log("Hier");
+					var today = new Date();
+					var day = today.getDate();
+					var month = today.getMonth()+1;
+					var year = today.getFullYear()-18;
+					if(month<10){
+						month = "0"+month;
+					}
+					if(day<10){
+						day = "0"+day;
+					}
+					$("#birthdate").prop("max",year+"-"+month+"-"+day);
+				}
 				if(!hasFormValidation()){
-					$("#submit").prop("disabled",true);
-					$("#email-error").hide();
-					$("#password-error").hide();
-					$("#birthdate-error").hide();
-					$("input").on('blur', isFormValid);
-					$("#agb").on('change', isFormValid);
+					$("input").on('change keyup', isFormValid);
+				}
+				else{
+					$("input").on('change keyup', checkHTMLFormValidity);
 				}
 			});
 			
@@ -32,38 +45,58 @@
 				$("#submit").prop("disabled",!formIsValid);
 			}
 			
+			function checkHTMLFormValidity(){
+				if(!hasNativeDateInput()){
+					
+				}
+				if(!$('#password')[0].checkValidity() && $('#password').val().length!=0){
+					$("#password-error").text("Das Passwort muss zwischen 4 und 8 Zeichen lang sein.");
+				}
+				else {
+					$("#password-error").text("");
+				}
+				if(!$('#email')[0].checkValidity()  && $('#email').val().length!=0){
+					$("#email-error").text("Bitte geben Sie eine g\u00fcltige Email-Adresse ein.");
+				}
+				else {
+					$("#email-error").text("");
+				}
+				var formIsValid = $('#registrationform')[0].checkValidity() & isBirthdateValid();
+				$("#submit").prop("disabled",!formIsValid);
+			}
+			
 			function isEmailValid() {
 				var emailInput = $("#email").val();
 				if(emailInput.length == 0){
-					$("#email-error").hide();
+					$("#email-error").text("");
 					return false;
 				}
 				if(!(/^\S+@\S+\.\S+$/.test(emailInput))){
-					$("#email-error").show();
+					$("#email-error").text("Bitte geben Sie eine g\u00fcltige Email-Adresse ein.");
 					return false;
 				}
-				$("#email-error").hide();
+				$("#email-error").text("");
 				return true;
 			}
 			
 			function isPasswordValid() {
 				var passwordInput = $("#password").val();
 				if(passwordInput.length == 0){
-					$("#password-error").hide();
+					$("#password-error").text("");
 					return false;
 				}
 				if(passwordInput.length < 4 || passwordInput.length > 8){
-					$("#password-error").show();
+					$("#password-error").text("Das Passwort muss zwischen 4 und 8 Zeichen lang sein.");
 					return false;
 				}
-				$("#password-error").hide();
+				$("#password-error").text("");
 				return true;
 			}
 			
 			function isBirthdateValid() {
 				var birthdateInput = getNormalizedDateString("#birthdate");		
 				if(birthdateInput.length == 0){
-					$("#birthdate-error").hide();
+					$("#birthdate-error").text("");
 					return false;
 				}
 				
@@ -71,6 +104,16 @@
 				var day = parseInt(splittedDate[0])
 				var month = parseInt(splittedDate[1])
 				var year = parseInt(splittedDate[2])
+				
+				if(!hasNativeDateInput()){
+					var timestamp = Date.parse(splittedDate[2]+"-"+splittedDate[1]+"-"+splittedDate[0]) 
+
+					if (isNaN(timestamp) ) { 
+						$("#birthdate-error").text("Bitte geben Sie ein g\u00fcltiges Datum der Form tt.mm.jjjj ein.");
+						return false;
+					} 
+				}
+
 				
 				var today = new Date();
 				var t_day = today.getDate();
@@ -80,12 +123,21 @@
 				if((year+18<t_year) ||
 				   (year+18==t_year && month<t_month) ||
 				   (year+18==t_year && month==t_month && day<=t_day)){
-					$("#birthdate-error").hide();
+					$("#birthdate-error").text("");
 					return true;
 				}
-				$("#birthdate-error").show();
+				$("#birthdate-error").text("Geburtsdatum muss mindestens 18 Jahre in der Vergangenheit liegen.");
 				return false;
 			}
+			
+			function check(input) {  
+				if(input.validity.typeMismatch){  
+					input.setCustomValidity("Dude '" + input.value + "' is not a valid email. Enter something nice!!");  
+				}  
+				else {  
+					input.setCustomValidity("");  
+				}                 
+			} 
 			//]]>
 		</script>
 		
@@ -121,26 +173,26 @@
 						</div>
 						<div class="row">
 							<label for="forename">Vorname*</label>
-							<input type="text" id="forename" name="forename"/>
+							<input type="text" id="forename" name="forename" required="required"/>
 						</div>
 						<div class="row">
 							<label for="lastname">Nachname*</label>
-							<input type="text" id="lastname" name="lastname"/>
+							<input type="text" id="lastname" name="lastname" required="required"/>
 						</div>
 						<div class="row">
 							<label for="birthdate">Geburtsdatum*</label>
-							<input type="date" id="birthdate" name="birthdate"/>
-							<span id="birthdate-error">Geburtsdatum muss mindestens 18 Jahre in der Vergangenheit liegen.</span>
+							<input type="date" id="birthdate" name="birthdate" required="required"/>
+							<span id="birthdate-error"></span>
 						</div>
 						<div class="row">
-							<label for="email">Email*</label>
-							<input type="text" id="email" name="email"/>
-							<span id="email-error">Bitte geben Sie eine g&uuml;ltige Email-Adresse ein.</span>
+							<label for="email">Email*</label> 
+							<input type="text" id="email" name="email" pattern="^\S+@\S+\.\S+$" required="required"/>
+							<span id="email-error"></span>
 						</div>
 						<div class="row">
 							<label for="password">Passwort*</label>
-							<input type="password" id="password" name="password"/>
-							<span id="password-error">Das Passwort muss zwischen 4 und 8 Zeichen lang sein.</span>
+							<input type="password" id="password" name="password" pattern=".{4,8}" required="required"/>
+							<span id="password-error" ></span>
 						</div>
 					</div>
 					<h4>Versandadresse</h4>
@@ -164,7 +216,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<input type="checkbox" id="agb" name="agb"/> Mit meiner Anmeldung akzeptiere ich die AGB.*
+						<input type="checkbox" id="agb" name="agb" required="required"/> Mit meiner Anmeldung akzeptiere ich die AGB.*
 					</div>
 					<div class="row">
 						<button type="submit" id="submit">Registrieren</button>
