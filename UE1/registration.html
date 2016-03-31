@@ -15,7 +15,77 @@
 	
 		<script type="text/javascript">
 			//<![CDATA[
+			$(document).ready(function() {
+				if(!hasFormValidation()){
+					$("#submit").prop("disabled",true);
+					$("#email-error").hide();
+					$("#password-error").hide();
+					$("#birthdate-error").hide();
+					$("input").on('blur', isFormValid);
+					$("#agb").on('change', isFormValid);
+				}
+			});
+			
+			function isFormValid() {
+				var formIsValid = isBirthdateValid() & isPasswordValid() & isEmailValid() & ($("#forename").val().length != 0) 
+									& ($("#lastname").val().length != 0) & $("#agb").is(':checked');
+				$("#submit").prop("disabled",!formIsValid);
+			}
+			
+			function isEmailValid() {
+				var emailInput = $("#email").val();
+				if(emailInput.length == 0){
+					$("#email-error").hide();
+					return false;
+				}
+				if(!(/^\S+@\S+\.\S+$/.test(emailInput))){
+					$("#email-error").show();
+					return false;
+				}
+				$("#email-error").hide();
+				return true;
+			}
+			
+			function isPasswordValid() {
+				var passwordInput = $("#password").val();
+				if(passwordInput.length == 0){
+					$("#password-error").hide();
+					return false;
+				}
+				if(passwordInput.length < 4 || passwordInput.length > 8){
+					$("#password-error").show();
+					return false;
+				}
+				$("#password-error").hide();
+				return true;
+			}
+			
+			function isBirthdateValid() {
+				var birthdateInput = getNormalizedDateString("#birthdate");		
+				if(birthdateInput.length == 0){
+					$("#birthdate-error").hide();
+					return false;
+				}
 				
+				var splittedDate = birthdateInput.split(".");
+				var day = parseInt(splittedDate[0])
+				var month = parseInt(splittedDate[1])
+				var year = parseInt(splittedDate[2])
+				
+				var today = new Date();
+				var t_day = today.getDate();
+				var t_month = today.getMonth()+1;
+				var t_year = today.getFullYear();
+				
+				if((year+18<t_year) ||
+				   (year+18==t_year && month<t_month) ||
+				   (year+18==t_year && month==t_month && day<=t_day)){
+					$("#birthdate-error").hide();
+					return true;
+				}
+				$("#birthdate-error").show();
+				return false;
+			}
 			//]]>
 		</script>
 		
@@ -51,26 +121,26 @@
 						</div>
 						<div class="row">
 							<label for="forename">Vorname*</label>
-							<input type="text" id="forename" name="forename" />
+							<input type="text" id="forename" name="forename"/>
 						</div>
 						<div class="row">
 							<label for="lastname">Nachname*</label>
-							<input type="text" id="lastname" name="lastname" />
+							<input type="text" id="lastname" name="lastname"/>
 						</div>
 						<div class="row">
-							<label for="dob">Geburtsdatum*</label>
-							<input type="text" id="dob" name="birthdate" />
-							<span id="dobvalidation"></span>
+							<label for="birthdate">Geburtsdatum*</label>
+							<input type="date" id="birthdate" name="birthdate"/>
+							<span id="birthdate-error">Geburtsdatum muss mindestens 18 Jahre in der Vergangenheit liegen.</span>
 						</div>
 						<div class="row">
 							<label for="email">Email*</label>
-							<input type="text" id="email" name="email" />
-							<span id="emailvalidation"></span>
+							<input type="text" id="email" name="email"/>
+							<span id="email-error">Bitte geben Sie eine g&uuml;ltige Email-Adresse ein.</span>
 						</div>
 						<div class="row">
 							<label for="password">Passwort*</label>
-							<input type="password" id="password" name="password" />
-							<span id="passvalidation"></span>
+							<input type="password" id="password" name="password"/>
+							<span id="password-error">Das Passwort muss zwischen 4 und 8 Zeichen lang sein.</span>
 						</div>
 					</div>
 					<h4>Versandadresse</h4>
@@ -94,10 +164,10 @@
 						</div>
 					</div>
 					<div class="row">
-						<input type="checkbox" name="AGB"/> Mit meiner Anmeldung akzeptiere ich die AGB.*
+						<input type="checkbox" id="agb" name="agb"/> Mit meiner Anmeldung akzeptiere ich die AGB.*
 					</div>
 					<div class="row">
-						<input type="submit" id="submit" disabled="disabled" value="Registrieren"/>  
+						<button type="submit" id="submit">Registrieren</button>
 					</div>
 					<div class="row">
 						Mit * gekennzeichnete Felder sind Pflichtfelder.
