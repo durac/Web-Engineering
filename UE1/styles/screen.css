@@ -1,6 +1,8 @@
 body{
 	background: linear-gradient(#FFFFFF, #D3D8E8);
 	font-family:"Arial", Helvetica, sans-serif;
+	width: 100%;
+	margin: 0;
 	
 }
 
@@ -11,6 +13,15 @@ header{
 	box-shadow: 1px 3px 5px #888888;
 	margin: -8px;
 }
+
+
+/* This causes that the padding and border property in all classes is not added to the width 
+ * but instead is already included in the width. */
+* {
+	box-sizing: border-box;
+	border: 1px solid black;
+}
+
 
 #logotext{
 	display: inline;
@@ -28,6 +39,109 @@ header ul{
 	overflow: hidden; 
 }
 
+@media only screen and (min-width: 400px) {
+
+}
+
+@media only screen and (min-width: 480px) {
+
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 1024px) {
+
+}
+
+
+.products {
+		max-width: 70%;
+		float: left;
+}
+	
+.container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: space-around;
+}
+
+.item {
+	max-width: 30%;
+	margin: 10px;
+	border-radius: 4px;
+	box-shadow: 0px 0px 2px 2px lightgrey;
+	height: 300px;
+}
+
+.text box {
+
+}
+
+.album_name {
+	text-align: center;
+}
+
+.highest_bid {
+	text-align: center;
+	font-size: 1.3em;
+}
+
+.time {
+	text-align: left;
+	float: left;
+	font-size: 0.8em;
+}
+
+.highest_bidder {
+	text-align: right;
+	float: right;
+	font-size: 0.8em;
+}
+
+.no_bid {
+	text-align: center;
+	font-size: 0.8em;
+}
+
+.aside {
+	width: 30%;
+	float: right;
+}
+
+.cover_image {
+	width: 100%;
+	border-radius: 4px 4px 0px 0px;
+}
+
+.account_label {
+	font-weight: bold;
+	text-align: left;
+}
+
+.account_value {
+	text-align: right;
+}
+
+.viewed_article {
+	font-style: italic;
+	text-decoration: underline;
+}
+
+.viewed_article a {
+	color: #4479BA;
+}
+
+
+footer {
+	clear: both;
+	text-align: center;
+}
+
+
 .button{
     border-radius: 4px;
     border: solid 1px #20538D;
@@ -37,4 +151,8 @@ header ul{
     color: #FFF;
     padding: 8px 12px;
     text-decoration: none;
+}
+
+.buttonlist{
+	float: right;
 }
