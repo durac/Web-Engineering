@@ -1,235 +1,98 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta charset="utf-8"/>
-		<meta name="author" content="Gruppe 57"/>
-		<meta name="description" content="Registrierungsseite f�r BIG BID"/>
-		<meta name="language" content="de-AT" />
-		<title xml:lang="de">BIG BID - Registrierung</title>
-		<link rel="stylesheet" type="text/css" href="./styles/screen.css"/>
-		<script type="text/javascript" src="./scripts/jquery.js"></script>
-		<script type="text/javascript" src="./scripts/framework.js"></script>
-	</head>
-	<body>
-	
-		<script type="text/javascript">
-			//<![CDATA[
-			$(document).ready(function() {
-				$("#submit").prop("disabled",true);
-				if(hasNativeDateInput()){
-					console.log("Hier");
-					var today = new Date();
-					var day = today.getDate();
-					var month = today.getMonth()+1;
-					var year = today.getFullYear()-18;
-					if(month<10){
-						month = "0"+month;
-					}
-					if(day<10){
-						day = "0"+day;
-					}
-					$("#birthdate").prop("max",year+"-"+month+"-"+day);
-				}
-				if(!hasFormValidation()){
-					$("input").on('change keyup', isFormValid);
-				}
-				else{
-					$("input").on('change keyup', checkHTMLFormValidity);
-				}
-			});
-			
-			function isFormValid() {
-				var formIsValid = isBirthdateValid() & isPasswordValid() & isEmailValid() & ($("#forename").val().length != 0) 
-									& ($("#lastname").val().length != 0) & $("#agb").is(':checked');
-				$("#submit").prop("disabled",!formIsValid);
-			}
-			
-			function checkHTMLFormValidity(){
-				if(!hasNativeDateInput()){
-					
-				}
-				if(!$('#password')[0].checkValidity() && $('#password').val().length!=0){
-					$("#password-error").text("Das Passwort muss zwischen 4 und 8 Zeichen lang sein.");
-				}
-				else {
-					$("#password-error").text("");
-				}
-				if(!$('#email')[0].checkValidity()  && $('#email').val().length!=0){
-					$("#email-error").text("Bitte geben Sie eine g\u00fcltige Email-Adresse ein.");
-				}
-				else {
-					$("#email-error").text("");
-				}
-				var formIsValid = $('#registrationform')[0].checkValidity() & isBirthdateValid();
-				$("#submit").prop("disabled",!formIsValid);
-			}
-			
-			function isEmailValid() {
-				var emailInput = $("#email").val();
-				if(emailInput.length == 0){
-					$("#email-error").text("");
-					return false;
-				}
-				if(!(/^\S+@\S+\.\S+$/.test(emailInput))){
-					$("#email-error").text("Bitte geben Sie eine g\u00fcltige Email-Adresse ein.");
-					return false;
-				}
-				$("#email-error").text("");
-				return true;
-			}
-			
-			function isPasswordValid() {
-				var passwordInput = $("#password").val();
-				if(passwordInput.length == 0){
-					$("#password-error").text("");
-					return false;
-				}
-				if(passwordInput.length < 4 || passwordInput.length > 8){
-					$("#password-error").text("Das Passwort muss zwischen 4 und 8 Zeichen lang sein.");
-					return false;
-				}
-				$("#password-error").text("");
-				return true;
-			}
-			
-			function isBirthdateValid() {
-				var birthdateInput = getNormalizedDateString("#birthdate");		
-				if(birthdateInput.length == 0){
-					$("#birthdate-error").text("");
-					return false;
-				}
-				
-				var splittedDate = birthdateInput.split(".");
-				var day = parseInt(splittedDate[0])
-				var month = parseInt(splittedDate[1])
-				var year = parseInt(splittedDate[2])
-				
-				if(!hasNativeDateInput()){
-					var timestamp = Date.parse(splittedDate[2]+"-"+splittedDate[1]+"-"+splittedDate[0]) 
+﻿
+<!-- The <!DOCTYPE> declaration helps the browser to display a web page correctly. -->
+<! DOCTYPE html>
+<!-- The language is declared in the lang attribute.This is important for accessibility applications (screen readers) and search engines. -->
+<html lang="en-US">
 
-					if (isNaN(timestamp) ) { 
-						$("#birthdate-error").text("Bitte geben Sie ein g\u00fcltiges Datum der Form tt.mm.jjjj ein.");
-						return false;
-					} 
-				}
+<head>
+      <title> Web Engineering Exercice one: HTML5,CSS3,WAI,JavaScript</title>
+      <meta charset="UTF-8">
+      <meta name= "author" content="Raquel SIMA">
+      <meta http-equiv="refresh" content="30">
 
-				
-				var today = new Date();
-				var t_day = today.getDate();
-				var t_month = today.getMonth()+1;
-				var t_year = today.getFullYear();
-				
-				if((year+18<t_year) ||
-				   (year+18==t_year && month<t_month) ||
-				   (year+18==t_year && month==t_month && day<=t_day)){
-					$("#birthdate-error").text("");
-					return true;
-				}
-				$("#birthdate-error").text("Geburtsdatum muss mindestens 18 Jahre in der Vergangenheit liegen.");
-				return false;
-			}
-			
-			function check(input) {  
-				if(input.validity.typeMismatch){  
-					input.setCustomValidity("Dude '" + input.value + "' is not a valid email. Enter something nice!!");  
-				}  
-				else {  
-					input.setCustomValidity("");  
-				}                 
-			} 
-			//]]>
-		</script>
-		
-		<!-- accessibility -->
-		<h1 class="accessibility">BIG Bid Regsitrierung</h1>
-		<h2 class="accessibility">Seitennavigation</h2>
-        <ul class="accessibility">
-			<li><a href="#navigation" title="Skip to navigation" accesskey="n">Springe zu Navigation</a></li>
-			<li><a href="#main" title="Skip to content" accesskey="i">Springe zu Inhalt</a></li>
-		</ul>
-		<!-- end accessibility -->
-		
-		<header>
-			<div>
-			<img src="./images/big-logo-small.png" alt="BIG-Logo">
-			<h1 id="logotext">BIG Bid</h1>
-			<h2 class="accessibility" id="navigation">Navigation</h2>
-			<ul>
-				<li><a href="overview.html" class="button">Einloggen</a></li>
-			</ul> 
-			</div>
-		</header>
-		<main id="main">
-			<h2 class="accessibility">Inhalt</h2>
-			<article>
-				<h3>Registrieren</h3>
-				<form action="#" method="post" id="registrationform">
-					<h4>Pers&ouml;nliche Daten</h4>
-					<div class="block">
-						<div class="row">
-							<label for="title">Anrede*</label>
-							<select name="title" id="title">
-								<option value="Frau" selected="selected">Frau</option>
-								<option value="Herr">Herr</option>
-							</select>
-						</div>
-						<div class="row">
-							<label for="forename">Vorname*</label>
-							<input type="text" id="forename" name="forename" required="required"/>
-						</div>
-						<div class="row">
-							<label for="lastname">Nachname*</label>
-							<input type="text" id="lastname" name="lastname" required="required"/>
-						</div>
-						<div class="row">
-							<label for="birthdate">Geburtsdatum*</label>
-							<input type="date" id="birthdate" name="birthdate" required="required"/>
-							<span id="birthdate-error"></span>
-						</div>
-						<div class="row">
-							<label for="email">Email*</label> 
-							<input type="text" id="email" name="email" pattern="^\S+@\S+\.\S+$" required="required"/>
-							<span id="email-error"></span>
-						</div>
-						<div class="row">
-							<label for="password">Passwort*</label>
-							<input type="password" id="password" name="password" pattern=".{4,8}" required="required"/>
-							<span id="password-error" ></span>
-						</div>
-					</div>
-					<h4>Versandadresse</h4>
-					<div class="block">
-						<div class="row">
-							<label for="street">Stra&szlig;e/Hausnummer</label>
-							<input type="text" id="street" name="street" />
-						</div>
-						<div class="row">
-							<label for="city">PLZ/Ort</label>
-							<input type="text" id="city" name="city" /> 
-						</div>
-						<div class="row">
-							<label for="country">Land</label>
-							<select name="country" id="title">
-								<option value=""></option>
-								<option value="Oesterreich">&Ouml;sterreich</option>
-								<option value="Deutschland">Deutschland</option>
-								<option value="Deutschland">Schweiz</option>
-							</select>
-						</div>
-					</div>
-					<div class="row">
-						<input type="checkbox" id="agb" name="agb" required="required"/> Mit meiner Anmeldung akzeptiere ich die AGB.*
-					</div>
-					<div class="row">
-						<button type="submit" id="submit">Registrieren</button>
-					</div>
-					<div class="row">
-						Mit * gekennzeichnete Felder sind Pflichtfelder.
-					</div>
-				</form>
-			</article>
-		</main>
-		<footer>&copy; 2016 BIG Bid</footer>
-	</body>
+     <!--  External Style-CSS. CSS stands for Cascading Style Sheets -->
+      <link rel="stylesheet"  type="text/css" href="registration.css">
+
+  
+ <!-- Loading JavaScript in HTML.<script src="framework.js">  -->
+
+<script type="text/javascript" src="./scripts/jquery.js"></script>
+<script type="text/javascript" src="./scripts/framework.js"></script>
+
+      <h2 style="background-color:rgb(255,96,53)">
+          <div id="header"><img src="C:\Users\Ada-Sima\Desktop\Images\big-logo.png"
+             alt="BIG Bid Logo" style="float:left;width=142px; height=142px;">
+             <h1>BIG Bid</h1>
+          </div>
+</head>
+
+<body>
+   
+<script src="framework.js"></script>
+   <h3>Registrieren</h3>
+   <h4>Personlichen Daten:</h4>
+
+<!-- If the form is updating data, or includes sensitive information (password). You should use POST -->
+
+<form action="action_page.php" method="post"  target="_blank" accept-charset="UTF-8" autocomplete="on">
+
+  <fieldset>
+      
+            Anrede*
+            <select name="Anrede">
+               <option value="Frau">Frau</option>
+               <option value="Mann">Mann</option>
+            </select> <br><br>
+
+         Vorname*
+          <input type="text" name="vorname" autofocus required>
+     
+         Nachname*
+             <input type="text" name="nachname" required>
+ 
+        Geburtsdatum*
+         <input type="date" name="gdatum" required>
+     
+         Email*
+         <input type="email" name="email" required>
+  
+    
+     
+   Password*
+         <input type="password" name="psw" required>
+      
+
+
+  <h4>Versandadresse:</h4>
+
+Strasse/Hausnummer:
+         <input type="text" name="strasse">
+  
+   PLZ/Ort:
+         <input type="text" name="plzort">
+    Land:
+     <select name="Land">
+      <option value="Oesterreich">&Ouml;sterreich</option>
+      <option value="Deutschland">Deutschland</option>
+      <option value="Schweiz">Schweiz</option>
+    </select><br><br>
+
+<div align="center"> 
+   <input type="checkbox" name="produkt1" value="Martian"> Mit meiner Anmeldung akzeptiere ich die AGB.*
+  <br><br>
+
+  <p align="center"> 
+ <input type="submit"   value="Registrieren"  align="middle" ></p>
+
+<p> Mit * gekennzeichnete Felder sind Pflichtfelder.</p>
+
+  </fieldset>
+</form>
+
+<div id="footer">
+     © 2016 BIG Bid
+</div>
+
+</body>
 </html>
+
