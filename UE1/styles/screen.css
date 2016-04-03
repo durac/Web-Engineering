@@ -1,3 +1,9 @@
+/* This causes that the padding and border property in all classes is not added to the width 
+ * but instead is already included in the width. */
+* {
+	box-sizing: border-box;
+}
+
 body{
 	background: linear-gradient(#FFFFFF, #D3D8E8);
 	font-family:"Arial", Helvetica, sans-serif;
@@ -13,21 +19,29 @@ header{
 	margin: -8px;
 }
 
-
-/* This causes that the padding and border property in all classes is not added to the width 
- * but instead is already included in the width. */
-* {
-	box-sizing: border-box;
-	/*border: 1px solid black;*/
+footer {
+	clear: both;
+	text-align: center;
 }
 
 
-#logotext{
-	display: inline;
+.logo{
+	margin: 20px 20px 20px 20px;
 }
 
-header ul{
-	list-style-type: none; 
+.logotext{
+	font-size: 1.8em;
+	color: #333333;
+	line-height: 49px;
+	height: 49px;
+}
+
+.buttonlist{
+	list-style-type: none;
+	margin: 38px 0px 0px 0px;
+	font-size: 0.8em;
+	margin-left: auto; 
+	margin-right: 25px;
 }
 
 .accessibility{ 
@@ -38,14 +52,6 @@ header ul{
 	overflow: hidden; 
 }
 
-
-
-footer {
-	clear: both;
-	text-align: center;
-}
-
-
 .button{
     border-radius: 4px;
     border: solid 1px #20538D;
@@ -53,7 +59,7 @@ footer {
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
     background: #4479BA;
     color: #FFF;
-    padding: 8px 12px;
+    padding: 12px 25px;
     text-decoration: none;
 }
 
