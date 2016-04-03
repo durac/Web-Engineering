@@ -9,6 +9,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale="1.0"/>
 		<title xml:lang="de">BIG BID - &Uuml;bersicht</title>
 		<link rel="stylesheet" type="text/css" href="./styles/screen.css"/>
+		<link rel="stylesheet" type="text/css" href="./styles/overview.css"/>
 		<script type="text/javascript" src="./scripts/jquery.js"></script>
 		<script type="text/javascript" src="./scripts/framework.js"></script>
 	</head>
@@ -36,115 +37,26 @@
 		<main id="main">
 			<h2 class="accessibility">Inhalt</h2>
 			
-			<section class="products">
-				<h2>Produkte</h2>
-				<section class="container"></div>
-					<article class="item">
-						<img class="cover_image" src="./images/rolling_stones.png" >
-						<div class="text_box"
-							<div class="album_name">Forty Licks</div>
-							<div class="highest_bid">20,00 &euro;</div>
-							<div class="time">4:11</div>
-							<div class="highest_bidder">Jane Doe</div>
-						</div>
-					</article>
-					<article class="item">
-						<img class="cover_image" src="./images/metallica.png" >
-						<div class="text_box"
-							<div class="album_name">Reload</div>
-							<div class="highest_bid">10,00 &euro;</div>
-							<div class="time">7:08</div>
-							<div class="highest_bidder">John Doe</div>
-						</div>
-					</article>
-					<article  class="item">
-						<img class="cover_image" src="./images/red_hot_chili_peppers.png" >
-						<div class="text_box"
-							<div class="album_name">Californication</div>
-							<div class="no_bid">Noch keine Gebote</div>
-							<div class="time">12:20</div>
-							<div class="highest_bidder"></div>
-						</div>
-					</article>
-					<article  class="item">
-						<img class="cover_image" src="./images/the_wizard_of_oz.png" >
-						<div class="text_box"
-							<div class="album_name">The Wizard of Oz</div>
-							<div class="no_bid">Noch keine Gebote</div>
-							<div class="time">20:20</div>
-							<div class="highest_bidder"></div>
-						</div>
-					</article>
-					<article  class="item">
-						<img class="cover_image" src="./images/pride_and_prejudice.png" >
-						<div class="text_box"
-							<div class="album_name">Pride and Prejudice</div>
-							<div class="no_bid">Noch keine Gebote</div>
-							<div class="time">31:57</div>
-							<div class="highest_bidder"></div>
-						</div>
-					</article>
-					
-					<article  class="item">
-						<img class="cover_image" src="./images/the_great_gatsby.png" >
-						<div class="text_box"
-							<div class="album_name">The Great Gatsby</div>
-							<div class="highest_bid">12,13 &euro;</div>
-							<div class="time">31:57</div>
-							<div class="highest_bidder">Max Muster</div>
-						</div>
-					</article>
-					<article  class="item">
-						<img class="cover_image" src="./images/the_godfather.png" >
-						<div class="text_box"
-							<div class="album_name">The Godfather</div>
-							<div class="highest_bid">5,00 &euro;</div>
-							<div class="time">45:13</div>
-							<div class="highest_bidder">Jane Doe</div>
-						</div>
-					</article>
-					<article  class="item">
-						<img class="cover_image" src="./images/1984.png" >
-						<div class="text_box"
-							<div class="album_name">1984</div>
-							<div class="highest_bid">15,00 &euro;</div>
-							<div class="time">abgelaufen</div>
-							<div class="highest_bidder">John Doe</div>
-						</div>
-					</article>
-					<article  class="item">
-						<img class="cover_image" src="./images/the_martian.png" >
-						<div class="text_box"
-							<div class="album_name">The_Martian</div>
-							<div class="no_bid">Noch keine Gebote</div>
-							<div class="time">abgelaufen</div>
-							<div class="highest_bidder"></div>
-						</div>
-					</article>
-				</section>
-			</section>
-			
 			<aside class="aside">
 				<div class="account_information">
 					<h2 class="user_name">John Doe</h2>
-					<div>
-					<div class="account_label">Kontostand:</div>
-					<div class="account_value">1.230,00 &euro;</div>
+					<div class="accountinfo_pair">
+						<div class="account_label">Kontostand:</div>
+						<div class="account_value">1.230,00 &euro;</div>
 					</div>
-					<div>
-					<div class="account_label">Laufend:</div>
-					<div class="account_value">1 Auktion</div>
+					<div class="accountinfo_pair">
+						<div class="account_label">Laufend:</div>
+						<div class="account_value">1 Auktion</div>
 					</div>
-					<div>
-					<div class="account_label">Gewonnen:</div>
-					<div class="account_value">1 Auktion</div>
+					<div class="accountinfo_pair">
+						<div class="account_label">Gewonnen:</div>
+						<div class="account_value">1 Auktion</div>
 					</div>
-					<div>
-					<div class="account_label">Verloren:</div>
-					<div class="account_value">0 Auktionen</div>
+					<div class="accountinfo_pair">
+						<div class="account_label">Verloren:</div>
+						<div class="account_value">0 Auktionen</div>
 					</div>
 				</div>
-				
 				<div class="last_viewed">
 					<h3>Zuletzt angesehen</h3>
 					<ul>
@@ -155,6 +67,94 @@
 				</div>				
 			</aside>
 			
+			
+			<section class="products">
+				<h2>Produkte</h2>
+				<section class="container"></div>
+					<article class="item">
+						<img class="cover_image" src="./images/rolling_stones.png" >
+						<div class="text_box">
+							<div class="album_name">Forty Licks</div>
+							<div class="highest_bid">20,00 &euro;</div>
+							<div class="time">4:11</div>
+							<div class="highest_bidder">Jane Doe</div>
+						</div>
+					</article>
+					<article class="item_highlight">
+						<img class="cover_image" src="./images/metallica.png" >
+						<div class="text_box">
+							<div class="album_name">Reload</div>
+							<div class="highest_bid">10,00 &euro;</div>
+							<div class="time">7:08</div>
+							<div class="highest_bidder">John Doe</div>
+						</div>
+					</article>
+					<article  class="item">
+						<img class="cover_image" src="./images/red_hot_chili_peppers.png" >
+						<div class="text_box">
+							<div class="album_name">Californication</div>
+							<div class="no_bid">Noch keine Gebote</div>
+							<div class="time">12:20</div>
+							<div class="highest_bidder"></div>
+						</div>
+					</article>
+					<article  class="item">
+						<img class="cover_image" src="./images/the_wizard_of_oz.png" >
+						<div class="text_box">
+							<div class="album_name">The Wizard of Oz</div>
+							<div class="no_bid">Noch keine Gebote</div>
+							<div class="time">20:20</div>
+							<div class="highest_bidder"></div>
+						</div>
+					</article>
+					<article  class="item">
+						<img class="cover_image" src="./images/pride_and_prejudice.png" >
+						<div class="text_box">
+							<div class="album_name">Pride and Prejudice</div>
+							<div class="no_bid">Noch keine Gebote</div>
+							<div class="time">31:57</div>
+							<div class="highest_bidder"></div>
+						</div>
+					</article>
+					<article  class="item">
+						<img class="cover_image" src="./images/the_great_gatsby.png" >
+						<div class="text_box">
+							<div class="album_name">The Great Gatsby</div>
+							<div class="highest_bid">12,13 &euro;</div>
+							<div class="time">34:50</div>
+							<div class="highest_bidder">Max Muster</div>
+						</div>
+					</article>
+					<article  class="item">
+						<img class="cover_image" src="./images/the_godfather.png" >
+						<div class="text_box">
+							<div class="album_name">The Godfather</div>
+							<div class="highest_bid">5,00 &euro;</div>
+							<div class="time">45:13</div>
+							<div class="highest_bidder">Jane Doe</div>
+						</div>
+					</article>
+					<article  class="item_opaque">
+						<img class="cover_image" src="./images/1984.png" >
+						<div class="text_box">
+							<div class="album_name">1984</div>
+							<div class="highest_bid">15,00 &euro;</div>
+							<div class="time">abgelaufen</div>
+							<div class="highest_bidder">John Doe</div>
+						</div>
+					</article>
+					<article  class="item_opaque">
+						<img class="cover_image" src="./images/the_martian.png" >
+						<div class="text_box">
+							<div class="album_name">The_Martian</div>
+							<div class="no_bid">Noch keine Gebote</div>
+							<div class="time">abgelaufen</div>
+							<div class="highest_bidder"></div>
+						</div>
+					</article>
+				</section>
+			</section>
+
 		</main>
 		<footer>&copy; 2016 BIG Bid</footer>
 	</body>

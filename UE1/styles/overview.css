@@ -1,0 +1,287 @@
+
+
+@media only screen and (min-width: 400px) {
+	.products {
+		max-width: 100%;
+		float: left;
+		padding: 4px 4px 4px 4px;
+	}
+
+	.aside {
+		width: 100%;
+		padding: 4px 8px 4px 8px;
+
+	}
+	
+	.item {
+		width: 100%;
+		margin: 10px 0px 10px 0px;
+		border-radius: 4px;
+		box-shadow: 0px 0px 2px 2px lightgrey;
+	}
+	 
+	.item_highlight {
+		width: 100%;
+		margin: 10px 0px 10px 0px;
+		border-radius: 4px;
+		color: #FB7700;
+		box-shadow: 0px 0px 2px 2px #FB7700;
+	}
+	
+	.item_opaque {
+		width: 100%;
+		margin: 10px 0px 10px 0px;
+		border-radius: 4px;
+		box-shadow: 0px 0px 2px 2px lightgrey;
+		opacity: 0.5;
+	}
+	
+	.account_information {
+		width: 100%;
+		padding: 4px 4px 4px 4px;
+
+	}
+	
+	.last_viewed {
+		width: 100%;
+		padding: 4px 4px 4px 4px;
+
+	}
+}
+
+@media only screen and (min-width: 480px) {
+
+	.products {
+		max-width: 100%;
+		float: left;
+		padding: 4px 4px 4px 4px;
+	}
+
+	.aside {
+		width: 100%;
+		padding: 4px 8px 4px 8px;
+	}
+	
+	.item {
+		width: 100%;
+		margin: 10px 0px 10px 0px;
+		border-radius: 4px;
+		box-shadow: 0px 0px 2px 2px lightgrey;
+	}
+	 
+	.item_highlight {
+		width: 100%;
+		margin: 10px 0px 10px 0px;
+		border-radius: 4px;
+		color: #FB7700;
+		box-shadow: 0px 0px 2px 2px #FB7700;
+	}
+	
+	.item_opaque {
+		width: 100%;
+		margin: 10px 0px 10px 0px;
+		border-radius: 4px;
+		box-shadow: 0px 0px 2px 2px lightgrey;
+		opacity: 0.5;
+	}
+	
+	.account_information {
+		width: 50%;
+		float: left;
+		padding: 4px 4px 4px 4px;
+	}
+	
+	.last_viewed {
+		width: 50%;
+		float: right;
+		padding: 4px 4px 4px 4px;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+
+	.products {
+		max-width: 70%;
+		float: left;
+		padding: 4px 4px 4px 4px;
+	}
+
+	.item {
+		width: 48.5%;
+		margin: 10px 0px 10px 0px;
+		border-radius: 4px;
+		box-shadow: 0px 0px 2px 2px lightgrey;
+	}
+	 
+	.item_highlight {
+		width: 48.5%;
+		margin: 10px 0px 10px 0px;
+		border-radius: 4px;
+		color: #FB7700;
+		box-shadow: 0px 0px 2px 2px #FB7700;
+	}
+	
+	.item_opaque {
+		width: 48.5%;
+		margin: 10px 0px 10px 0px;
+		border-radius: 4px;
+		box-shadow: 0px 0px 2px 2px lightgrey;
+		opacity: 0.5;
+	}
+	
+	.aside {
+		width: 30%;
+		float: right;
+		padding: 4px 8px 4px 8px;
+	}
+	
+	.account_information {
+		width: 100%;
+		clear: left;
+		padding: 4px 4px 4px 4px;
+	}
+	
+	.last_viewed {
+		width: 100%;
+		clear: right;
+		padding: 4px 4px 4px 4px;
+	}
+
+}
+
+@media only screen and (min-width: 1024px) {
+	
+	.products {
+		max-width: 70%;
+		padding: 4px 4px 4px 4px;
+		/*float: left;*/
+	}
+	
+	.item {
+		width: 32%;
+		margin: 10px 0px 10px 0px;
+		border-radius: 4px;
+		box-shadow: 0px 0px 2px 2px lightgrey;
+	}
+	
+	.item_highlight {
+		width: 32%;
+		margin: 10px 0px 10px 0px;
+		border-radius: 4px;
+		color: #FB7700;
+		box-shadow: 0px 0px 2px 2px #FB7700;
+	}
+	
+	.item_opaque {
+		width: 32%;
+		margin: 10px 0px 10px 0px;
+		border-radius: 4px;
+		box-shadow: 0px 0px 2px 2px lightgrey;
+		opacity: 0.5;
+	}
+	
+	.aside {
+		width: 30%;
+		padding: 4px 8px 4px 8px;
+		border-left-style: solid;
+		border-left-color: lightgrey;
+		/*float: right;*/
+	}
+	
+	.account_information {
+		width: 100%;
+		clear: left;
+		padding: 4px 4px 4px 4px;
+		border-bottom-style: solid;
+		border-bottom-color: lightgrey;
+	}
+	
+	.last_viewed {
+		width: 100%;
+		clear: right;
+		padding: 4px 4px 4px 4px;
+	}
+
+}
+
+.accountinfo_pair {
+	padding: 4px 0px 4px 0px;
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: space-around;
+}
+
+
+.text_box {
+	height: 100px;
+	background: white;
+	border-radius: 0px 0px 4px 4px;
+}
+
+.album_name {
+	/*width: auto; */
+	padding: 4px 0px 4px 0px;
+	text-align: center;
+	font-size: 1.15em;
+}
+
+.highest_bid {
+	padding: 6px 0px 6px 0px;
+	text-align: center;
+	font-size: 1.3em;
+}
+
+.time {
+	padding: 4px 4px 4px 4px;
+	text-align: left;
+	float: left;
+	font-size: 0.8em;
+}
+
+.highest_bidder {
+	padding: 4px 4px 4px 4px;
+	text-align: right;
+	float: right;
+	font-size: 0.8em;
+}
+
+.no_bid {
+	padding: 11px 0px 11px 0px;
+	text-align: center;
+	font-size: 0.8em;
+}
+
+.cover_image {
+	width: 100%;
+	border-radius: 4px 4px 0px 0px;
+}
+
+.account_label {
+	font-size: 1em;
+	display: inline;
+	font-weight: bold;
+	text-align: left;
+	
+}
+
+.account_value {
+	font-size: 1em;
+	text-align: right;
+	float: right;
+
+}
+
+.viewed_article {
+	font-style: italic;
+	text-decoration: underline;
+}
+
+.viewed_article a {
+	color: #4479BA;
+}
+

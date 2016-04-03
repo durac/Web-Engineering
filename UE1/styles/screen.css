@@ -3,7 +3,6 @@ body{
 	font-family:"Arial", Helvetica, sans-serif;
 	width: 100%;
 	margin: 0;
-	
 }
 
 header{
@@ -19,7 +18,7 @@ header{
  * but instead is already included in the width. */
 * {
 	box-sizing: border-box;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 }
 
 
@@ -39,101 +38,6 @@ header ul{
 	overflow: hidden; 
 }
 
-@media only screen and (min-width: 400px) {
-
-}
-
-@media only screen and (min-width: 480px) {
-
-}
-
-@media only screen and (min-width: 768px) {
-
-}
-
-@media only screen and (min-width: 1024px) {
-
-}
-
-
-.products {
-		max-width: 70%;
-		float: left;
-}
-	
-.container {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-items: flex-start;
-	justify-content: space-around;
-}
-
-.item {
-	max-width: 30%;
-	margin: 10px;
-	border-radius: 4px;
-	box-shadow: 0px 0px 2px 2px lightgrey;
-	height: 300px;
-}
-
-.text box {
-
-}
-
-.album_name {
-	text-align: center;
-}
-
-.highest_bid {
-	text-align: center;
-	font-size: 1.3em;
-}
-
-.time {
-	text-align: left;
-	float: left;
-	font-size: 0.8em;
-}
-
-.highest_bidder {
-	text-align: right;
-	float: right;
-	font-size: 0.8em;
-}
-
-.no_bid {
-	text-align: center;
-	font-size: 0.8em;
-}
-
-.aside {
-	width: 30%;
-	float: right;
-}
-
-.cover_image {
-	width: 100%;
-	border-radius: 4px 4px 0px 0px;
-}
-
-.account_label {
-	font-weight: bold;
-	text-align: left;
-}
-
-.account_value {
-	text-align: right;
-}
-
-.viewed_article {
-	font-style: italic;
-	text-decoration: underline;
-}
-
-.viewed_article a {
-	color: #4479BA;
-}
 
 
 footer {
@@ -153,6 +57,3 @@ footer {
     text-decoration: none;
 }
 
-.buttonlist{
-	float: right;
-}
