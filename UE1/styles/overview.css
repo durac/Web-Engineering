@@ -1,6 +1,4 @@
-
-
-@media only screen and (min-width: 400px) {
+@media only screen{
 	.products {
 		max-width: 100%;
 		float: left;
@@ -10,7 +8,6 @@
 	.aside {
 		width: 100%;
 		padding: 4px 8px 4px 8px;
-
 	}
 	
 	.item {
@@ -39,13 +36,16 @@
 	.account_information {
 		width: 100%;
 		padding: 4px 4px 4px 4px;
+		border-bottom-style: solid;
+		border-bottom-color: lightgrey;
 
 	}
 	
 	.last_viewed {
 		width: 100%;
 		padding: 4px 4px 4px 4px;
-
+		border-bottom-style: solid;
+		border-bottom-color: lightgrey;
 	}
 }
 
@@ -55,22 +55,26 @@
 		max-width: 100%;
 		float: left;
 		padding: 4px 4px 4px 4px;
+		border-top-style: solid;
+		border-top-color: lightgrey;
+		margin-top: 20px;
 	}
 
 	.aside {
 		width: 100%;
 		padding: 4px 8px 4px 8px;
+		margin-top: 20px;
 	}
 	
 	.item {
-		width: 100%;
+		width: 48.5%;
 		margin: 10px 0px 10px 0px;
 		border-radius: 4px;
 		box-shadow: 0px 0px 2px 2px lightgrey;
 	}
 	 
 	.item_highlight {
-		width: 100%;
+		width: 48.5%;
 		margin: 10px 0px 10px 0px;
 		border-radius: 4px;
 		color: #FB7700;
@@ -78,7 +82,7 @@
 	}
 	
 	.item_opaque {
-		width: 100%;
+		width: 48.5%;
 		margin: 10px 0px 10px 0px;
 		border-radius: 4px;
 		box-shadow: 0px 0px 2px 2px lightgrey;
@@ -89,12 +93,16 @@
 		width: 50%;
 		float: left;
 		padding: 4px 4px 4px 4px;
+		border-right-style: solid;
+		border-right-color: lightgrey;
+		border-bottom-style: none;
 	}
 	
 	.last_viewed {
 		width: 50%;
 		float: right;
 		padding: 4px 4px 4px 4px;
+		border-bottom-style: none;
 	}
 }
 
@@ -104,6 +112,9 @@
 		max-width: 70%;
 		float: left;
 		padding: 4px 4px 4px 4px;
+		border-right-style: solid;
+		border-right-color: lightgrey;
+		border-top-style: none;
 	}
 
 	.item {
@@ -139,6 +150,9 @@
 		width: 100%;
 		clear: left;
 		padding: 4px 4px 4px 4px;
+		border-bottom-style: solid;
+		border-bottom-color: lightgrey;
+		border-right-style: none;
 	}
 	
 	.last_viewed {
@@ -154,7 +168,8 @@
 	.products {
 		max-width: 70%;
 		padding: 4px 4px 4px 4px;
-		/*float: left;*/
+		border-right-style: solid;
+		border-right-color: lightgrey;
 	}
 	
 	.item {
@@ -183,8 +198,6 @@
 	.aside {
 		width: 30%;
 		padding: 4px 8px 4px 8px;
-		border-left-style: solid;
-		border-left-color: lightgrey;
 		/*float: right;*/
 	}
 	
@@ -202,6 +215,10 @@
 		padding: 4px 4px 4px 4px;
 	}
 
+}
+
+.products_title {
+	margin-left: 10px;
 }
 
 .accountinfo_pair {

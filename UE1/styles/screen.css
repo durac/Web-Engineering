@@ -4,6 +4,7 @@
 	box-sizing: border-box;
 }
 
+
 body{
 	background: linear-gradient(#FFFFFF, #D3D8E8);
 	font-family:"Arial", Helvetica, sans-serif;
@@ -16,18 +17,25 @@ header{
 	background: linear-gradient(#FB7700, #CC4800);
 	position: relative;
 	box-shadow: 1px 3px 5px #888888;
-	margin: -8px;
+	height: 80px;
 }
 
-footer {
+footer{
 	clear: both;
 	text-align: center;
 }
 
 
 .logo{
-	margin: 20px 20px 20px 20px;
+	margin: 15px;
 }
+
+@media only screen and (max-width: 400px) {
+	.logotext{
+		display:none;
+	}
+}
+
 
 .logotext{
 	font-size: 1.8em;
@@ -53,11 +61,9 @@ footer {
 }
 
 .button{
-    border-radius: 4px;
-    border: solid 1px #20538D;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
-    background: #4479BA;
+    border-radius: 6px;
+    border: solid 1px #003D7E;
+    background: linear-gradient(#0067BA, #003D7E);
     color: #FFF;
     padding: 12px 25px;
     text-decoration: none;

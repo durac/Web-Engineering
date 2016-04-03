@@ -1,0 +1,87 @@
+
+section{
+	padding: 30px;
+}
+
+input, select, button{
+	width: 100%;
+	border-radius: 4px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: lightgrey;
+	padding: 5px 5px;
+}
+
+input[type='checkbox']{
+	width: auto;
+}
+
+button{
+	padding: 12px 12px;
+}
+
+button:disabled{
+	background: linear-gradient(#C8C8C8, #979797);
+	border: solid 1px #979797;
+	color: black;
+}
+
+.row{
+	margin: 18px 0;
+}
+
+.infotext{
+	font-size: 0.8em;
+	text-align: center;
+}
+
+#checkbox{
+	text-align: center;
+}
+
+h2{
+	font-size: 1.5em;
+}
+	
+h3{
+	font-size: 1.2em;
+}
+
+.error{
+	color: red;
+}
+
+@media only screen and (min-width: 400px) {
+
+	h2{
+		font-size: 2em;
+	}
+	
+	h3{
+		font-size: 1.7em;
+	}
+
+	label {
+		width: 50%;
+		float:left;
+	}
+
+	select, input{
+		width: 50%;
+	}
+	
+	button{
+		display: block;
+		width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+}
+
+@media only screen and (min-width: 768px) {
+	
+	section{
+		width: 768px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}

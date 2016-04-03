@@ -162,73 +162,81 @@
 		</header>
 		<main id="main">
 			<h2 class="accessibility">Inhalt</h2>
-			<article>
-				<h3>Registrieren</h3>
+			<section>
+				<h2>Registrieren</h2>
 				<form action="#" method="post" id="registrationform">
-					<h4>Pers&ouml;nliche Daten</h4>
-					<div class="block">
-						<div class="row">
-							<label for="title">Anrede*</label>
-							<select name="title" id="title">
-								<option value="Frau" selected="selected">Frau</option>
-								<option value="Herr">Herr</option>
-							</select>
-						</div>
-						<div class="row">
-							<label for="forename">Vorname*</label>
-							<input type="text" id="forename" name="forename" required="required"/>
-						</div>
-						<div class="row">
-							<label for="lastname">Nachname*</label>
-							<input type="text" id="lastname" name="lastname" required="required"/>
-						</div>
-						<div class="row">
-							<label for="birthdate">Geburtsdatum*</label>
-							<input type="date" id="birthdate" name="birthdate" required="required"/>
-							<span id="birthdate-error"></span>
-						</div>
-						<div class="row">
-							<label for="email">Email*</label> 
-							<input type="text" id="email" name="email" pattern="^\S+@\S+\.\S+$" required="required"/>
-							<span id="email-error"></span>
-						</div>
-						<div class="row">
-							<label for="password">Passwort*</label>
-							<input type="password" id="password" name="password" pattern=".{4,8}" required="required"/>
-							<span id="password-error" ></span>
-						</div>
-					</div>
-					<h4>Versandadresse</h4>
-					<div class="block">
-						<div class="row">
-							<label for="street">Stra&szlig;e/Hausnummer</label>
-							<input type="text" id="street" name="street" />
-						</div>
-						<div class="row">
-							<label for="city">PLZ/Ort</label>
-							<input type="text" id="city" name="city" /> 
-						</div>
-						<div class="row">
-							<label for="country">Land</label>
-							<select name="country" id="title">
-								<option value=""></option>
-								<option value="Oesterreich">&Ouml;sterreich</option>
-								<option value="Deutschland">Deutschland</option>
-								<option value="Deutschland">Schweiz</option>
-							</select>
-						</div>
-					</div>
+					<h3>Pers&ouml;nliche Daten</h3>
+					
 					<div class="row">
-						<input type="checkbox" id="agb" name="agb" required="required"/> Mit meiner Anmeldung akzeptiere ich die AGB.*
+					<label for="title">Anrede*</label>
+					<select name="title" id="title">
+						<option value="Frau" selected="selected">Frau</option>
+						<option value="Herr">Herr</option>
+					</select><br>
 					</div>
+					
 					<div class="row">
-						<button type="submit" id="submit">Registrieren</button>
-					</div>
+					<label for="forename">Vorname*</label>
+					<input type="text" id="forename" name="forename" required="required"/><br>
+					</div>		
+							
 					<div class="row">
-						Mit * gekennzeichnete Felder sind Pflichtfelder.
+					<label for="lastname">Nachname*</label>
+					<input type="text" id="lastname" name="lastname" required="required"/><br>
 					</div>
+					
+					<div class="row">
+					<label for="birthdate">Geburtsdatum*</label>
+					<input type="date" id="birthdate" name="birthdate" required="required"/><br>
+					<span id="birthdate-error" class="error"></span>
+					</div>
+
+					<div class="row">
+					<label for="email">Email*</label> 
+					<input type="text" id="email" name="email" pattern="^\S+@\S+\.\S+$" required="required"/><br>
+					<span id="email-error" class="error"></span>
+					</div>
+
+					<div class="row">
+					<label for="password">Passwort*</label>
+					<input type="password" id="password" name="password" pattern=".{4,8}" required="required"/><br>
+					<span id="password-error" class="error"></span>
+					</div>
+
+					<h3>Versandadresse</h3>
+
+					<div class="row">
+					<label for="street">Stra&szlig;e/Hausnummer</label>
+					<input type="text" id="street" name="street" /><br>
+					</div>
+					
+					<div class="row">
+					<label for="city">PLZ/Ort</label>
+					<input type="text" id="city" name="city" /><br>
+					</div>
+					
+					<div class="row">
+					<label for="country">Land</label>
+					<select name="country" id="title">
+						<option value=""></option>
+						<option value="Oesterreich">&Ouml;sterreich</option>
+						<option value="Deutschland">Deutschland</option>
+						<option value="Deutschland">Schweiz</option>
+					</select><br>
+					</div>
+					
+					<div id="checkbox" class="row">
+						<input type="checkbox" id="agb" name="agb" required="required"/> 
+						<span class="infotext">Mit meiner Anmeldung akzeptiere ich die AGB.*</span>
+					</div>
+					
+					<div class="row">
+					<button type="submit" id="submit" class="button">Registrieren</button>
+					</div>
+					
+					<div class="infotext row">Mit * gekennzeichnete Felder sind Pflichtfelder.</div>
 				</form>
-			</article>
+			</section>
 		</main>
 		<footer>&copy; 2016 BIG Bid</footer>
 	</body>
