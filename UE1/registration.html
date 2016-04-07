@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
+ï»¿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
 	<head>
 		<meta charset="utf-8"/>
 		<meta name="author" content="Gruppe 57"/>
-		<meta name="description" content="Registrierungsseite für BIG BID"/>
+		<meta name="description" content="Registrierungsseite f&uuml;r BIG BID"/>
 		<meta name="language" content="de-AT" />
-		<meta name="viewport" content="width=device-width, initial-scale="1.0"/>
-		<title xml:lang="de">BIG BID - Registrierung</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title lang="de" xml:lang="de">BIG BID - Registrierung</title>
 		<link rel="stylesheet" type="text/css" href="./styles/screen.css"/>
 		<link rel="stylesheet" type="text/css" href="./styles/registration.css"/>
 		<script type="text/javascript" src="./scripts/jquery.js"></script>
@@ -20,7 +20,6 @@
 			$(document).ready(function() {
 				$("#submit").prop("disabled",true);
 				if(hasNativeDateInput()){
-					console.log("Hier");
 					var today = new Date();
 					var day = today.getDate();
 					var month = today.getMonth()+1;
@@ -217,17 +216,19 @@
 					
 					<div class="row">
 					<label for="country">Land</label>
-					<select name="country" id="title">
-						<option value=""></option>
+					<select name="country" id="country">
+						<option label=" "> </option>
 						<option value="Oesterreich">&Ouml;sterreich</option>
 						<option value="Deutschland">Deutschland</option>
 						<option value="Deutschland">Schweiz</option>
 					</select><br>
 					</div>
 					
-					<div id="checkbox" class="row">
-						<input type="checkbox" id="agb" name="agb" required="required"/> 
-						<span class="infotext">Mit meiner Anmeldung akzeptiere ich die AGB.*</span>
+					<div class="row">
+						<label for="agb" id="checkbox">
+							<input type="checkbox" id="agb" name="agb" required="required"/> 
+							<span class="infotext">Mit meiner Anmeldung akzeptiere ich die AGB.*</span>
+						</label><br>
 					</div>
 					
 					<div class="row">

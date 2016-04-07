@@ -1,4 +1,4 @@
-/* This causes that the padding and border property in all classes is not added to the width 
+﻿/* This causes that the padding and border property in all classes is not added to the width 
  * but instead is already included in the width. */
 * {
 	box-sizing: border-box;
