@@ -1,4 +1,4 @@
-<!doctype html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="de">
 <head>
     <meta charset="utf-8">
@@ -27,7 +27,7 @@
 </header>
 <div class="main-container">
     <main aria-labelledby="formheadline">
-        <form class="form" method="post">
+        <form class="form" action="LoginServlet" method="post">
             <h2 id="formheadline" class="registration-headline">Anmelden</h2>
             <div class="form-row">
                 <label class="form-label" for="email-input">

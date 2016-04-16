@@ -5,21 +5,27 @@
             "artist": "Red Hot Chili Peppers",
             "year": "1999",
             "img" : "red_hot_chili_peppers.png",
-            "dbpedia": "http://dbpedia.org/page/Californication_(album)"
+            "dbpedia": "http://dbpedia.org/page/Californication_(album)",
+            "expirationDate": "2016,04,20,14,30,23,288",
+            "productID": "ab85b749-fb7a-4e03-9483-11e42ef091cf"
         },
         {
             "album_name": "Forty Licks",
             "artist": "The Rolling Stones",
             "year": "2002",
             "img" : "rolling_stones.png",
-            "dbpedia": "http://dbpedia.org/page/Forty_Licks"
+            "dbpedia": "http://dbpedia.org/page/Forty_Licks",
+            "expirationDate": "2016,04,21,14,30,23,288",
+            "productID": "a066195f-590e-4d4d-bb70-961996b41314"
         },
         {
             "album_name": "Reload",
             "artist": "Metallica",
             "year": "1997",
             "img" : "metallica.png",
-            "dbpedia": "http://dbpedia.org/page/Reload_(Metallica_album)"
+            "dbpedia": "http://dbpedia.org/page/Reload_(Metallica_album)",
+            "expirationDate": "2016,04,18,14,30,23,288",
+            "productID": "ef4c3945-7e34-4676-bb61-94ee7866fd84"
         }
     ],
     "books": [
@@ -28,21 +34,27 @@
             "author": "Jane Austen",
             "year": "1813",
             "img" : "pride_and_prejudice.png",
-            "dbpedia": "http://dbpedia.org/page/Pride_and_Prejudice"
+            "dbpedia": "http://dbpedia.org/page/Pride_and_Prejudice",
+            "expirationDate": "2016,04,16,14,30,23,288",
+            "productID": "b4597af2-6fdd-4dac-a94d-a6b2a634512a"
         },
         {
             "title": "1984",
             "author": "George Orwell",
             "year": "1949",
             "img" : "1984.png",
-            "dbpedia": "http://dbpedia.org/page/Nineteen_Eighty-Four"
+            "dbpedia": "http://dbpedia.org/page/Nineteen_Eighty-Four",
+            "expirationDate": "2016,04,22,14,30,23,288",
+            "productID": "8505b7f2-7271-4d97-8343-971b6b912016"
         },
         {
             "title": "The Great Gatsby",
             "author": "F. Scott Fitzgerald",
             "year": "1925",
             "img" : "the_great_gatsby.png",
-            "dbpedia": "http://dbpedia.org/page/The_Great_Gatsby"
+            "dbpedia": "http://dbpedia.org/page/The_Great_Gatsby",
+            "expirationDate": "2016,04,30,14,30,23,288",
+            "productID": "2797123c-4d71-4dc2-9658-9c24a294f424"
         }
     ],
     "movies": [
@@ -51,21 +63,27 @@
             "director": "Francis Ford Coppola",
             "year": "1972",
             "img" : "the_godfather.png",
-            "dbpedia": "http://dbpedia.org/page/The_Godfather"
+            "dbpedia": "http://dbpedia.org/page/The_Godfather",
+            "expirationDate": "2016,04,29,14,30,23,288",
+            "productID": "714fbe93-b14d-4fbd-83d7-97a78b2549b8"
         },
         {
             "title": "The Martian",
             "director": "Ridley Scott",
             "year": "2015",
             "img" : "the_martian.png",
-            "dbpedia": "http://dbpedia.org/page/The_Martian_(film)"
+            "dbpedia": "http://dbpedia.org/page/The_Martian_(film)",
+            "expirationDate": "2016,05,20,14,30,23,288",
+            "productID": "fdf093a5-6ee2-48a0-b10f-21ec2735abe0"
         },
         {
             "title": "The Wizard of Oz",
             "director": "Victor Fleming",
             "year": "1939",
             "img" : "the_wizard_of_oz.png",
-            "dbpedia": "http://dbpedia.org/page/The_Wizard_of_Oz_(1939_film)"
+            "dbpedia": "http://dbpedia.org/page/The_Wizard_of_Oz_(1939_film)",
+            "expirationDate": "2016,06,20,14,30,23,288",
+            "productID": "a5d68110-562b-437f-992a-8b6735f9d251"
         }
     ]
 }

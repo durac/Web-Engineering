@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.Date;
 
 public class JSONDataLoader {
 
@@ -32,7 +33,7 @@ public class JSONDataLoader {
     private static void loadProducts() {
         InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("products.json");
         Reader reader = new InputStreamReader(is);
-        Gson gson = new GsonBuilder().create();
+        Gson gson = new GsonBuilder().setDateFormat("yyyy,MM,dd,HH,mm,ss,SSS").create();
         products = gson.fromJson(reader, Product.class);
     }
 
@@ -72,6 +73,24 @@ public class JSONDataLoader {
         private String artist;
         private String year;
         private String img;
+        private Date expirationDate;
+        private String productID;
+
+        public String getProductID() {
+            return productID;
+        }
+
+        public void setProductID(String productID) {
+            this.productID = productID;
+        }
+
+        public Date getExpirationDate() {
+            return expirationDate;
+        }
+
+        public void setExpirationDate(Date expiration_date) {
+            this.expirationDate = expiration_date;
+        }
 
         public String getAlbum_name() {
             return album_name;
@@ -112,6 +131,24 @@ public class JSONDataLoader {
         private String author;
         private String year;
         private String img;
+        private Date expirationDate;
+        private String productID;
+
+        public String getProductID() {
+            return productID;
+        }
+
+        public void setProductID(String productID) {
+            this.productID = productID;
+        }
+
+        public Date getExpirationDate() {
+            return expirationDate;
+        }
+
+        public void setExpirationDate(Date expiration_date) {
+            this.expirationDate = expiration_date;
+        }
 
         public String getTitle() {
             return title;
@@ -152,6 +189,24 @@ public class JSONDataLoader {
         private String director;
         private String year;
         private String img;
+        private Date expirationDate;
+        private String productID;
+
+        public String getProductID() {
+            return productID;
+        }
+
+        public void setProductID(String productID) {
+            this.productID = productID;
+        }
+
+        public Date getExpirationDate() {
+            return expirationDate;
+        }
+
+        public void setExpirationDate(Date expiration_date) {
+            this.expirationDate = expiration_date;
+        }
 
         public String getTitle() {
             return title;

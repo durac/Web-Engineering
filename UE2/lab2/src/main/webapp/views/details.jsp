@@ -1,4 +1,4 @@
-<!doctype html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="de">
 <head>
     <meta charset="utf-8">
@@ -26,38 +26,7 @@
     </nav>
 </header>
 <div class="main-container">
-    <aside class="sidebar" aria-labelledby="userinfoheadline">
-        <div class="user-info-container">
-            <h2 class="accessibility" id="userinfoheadline">Benutzerdaten</h2>
-            <dl class="user-data properties">
-                <dt class="accessibility">Name:</dt>
-                <dd class="user-name">John Doe</dd>
-                <dt>Kontostand:</dt>
-                <dd>
-                    <span class="balance">1.500,00 €</span>
-                </dd>
-                <dt>Laufend:</dt>
-                <dd>
-                    <span class="running-auctions-count">0</span>
-                    <span class="auction-label" data-plural="Auktionen" data-singular="Auktion">Auktionen</span>
-                </dd>
-                <dt>Gewonnen:</dt>
-                <dd>
-                    <span class="won-auctions-count">0</span>
-                    <span class="auction-label" data-plural="Auktionen" data-singular="Auktion">Auktionen</span>
-                </dd>
-                <dt>Verloren:</dt>
-                <dd>
-                    <span class="lost-auctions-count">0</span>
-                    <span class="auction-label" data-plural="Auktionen" data-singular="Auktion">Auktionen</span>
-                </dd>
-            </dl>
-        </div>
-        <div class="recently-viewed-container">
-            <h3 class="recently-viewed-headline">Zuletzt angesehen</h3>
-            <ul class="recently-viewed-list"></ul>
-        </div>
-    </aside>
+    <jsp:include page="sidebar.jsp" flush="true" />
     <main aria-labelledby="productheadline" class="details-container">
         <div class="details-image-container">
             <img class="details-image" src="../images/the_godfather.png" alt="">
