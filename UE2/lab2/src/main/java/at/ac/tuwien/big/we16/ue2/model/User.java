@@ -5,18 +5,28 @@ package at.ac.tuwien.big.we16.ue2.model;
  */
 public class User {
 
+    private int userID;
     private String forename, lastname, email, password;
     private double credit;
 
     public User(){}
 
-    public User(String forename, String lastname, String email, String password, double credit) {
-        this.forename = forename;
+    public User(int userID, String forename, String lastname, String email, String password, double credit) {
+        this.userID = userID;
 
+        this.forename = forename;
         this.lastname = lastname;
         this.email = email;
         this.password = password;
         this.credit = credit;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public String getEmail() {

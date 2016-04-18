@@ -1,5 +1,6 @@
 package at.ac.tuwien.big.we16.ue2.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -25,22 +26,18 @@ public class Product {
 
     }
 
-    public String getImage() {
+    public String getImageName() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImageName(String image) {
         this.image = image;
     }
 
-    public Date getExpiration_date() {
-        return expiration_date;
+    public String getExpirationDateString() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy,MM,dd,HH,mm,ss,SSS");
+        return sdf.format(expiration_date);
     }
-
-    public void setExpiration_date(Date expiration_date) {
-        this.expiration_date = expiration_date;
-    }
-
 
     public String getProductID() {
         return productID;
@@ -62,6 +59,10 @@ public class Product {
         return price;
     }
 
+    public String getPriceString() {
+        return String.format("%.2f",price);
+    }
+
     public void setPrice(double price) {
         this.price = price;
     }
@@ -74,11 +75,27 @@ public class Product {
         this.expiration_date = expiration_date;
     }
 
-    public User getHighest_bidder() {
+    public User getHighestBidder() {
         return highest_bidder;
     }
 
-    public void setHighest_bidder(User highest_bidder) {
+    public String getHighestBidderString() {
+        if(highest_bidder!=null) {
+            return highest_bidder.getForename()+" "+highest_bidder.getLastname();
+        }
+        return "Keine Gebote";
+    }
+
+    public void setHighestBidder(User highest_bidder) {
         this.highest_bidder = highest_bidder;
+    }
+
+    public String getProductClass(User user){
+        String r = "";
+        if(user.equals(highest_bidder))
+            r = "highlight";
+        else if(expiration_date.before(new Date()))
+            r = "expired";
+        return r;
     }
 }

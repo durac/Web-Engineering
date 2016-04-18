@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="product" scope="session" class="at.ac.tuwien.big.we16.ue2.model.Product"/>
 <html lang="de">
 <head>
     <meta charset="utf-8">
@@ -10,48 +11,34 @@
 
 <a href="#productsheadline" class="accessibility">Zum Inhalt springen</a>
 
-<header aria-labelledby="bannerheadline">
-    <img class="title-image" src="../images/big-logo-small.png" alt="BIG Bid logo">
-
-    <h1 class="header-title" id="bannerheadline">
-        BIG Bid
-    </h1>
-    <nav aria-labelledby="navigationheadline">
-        <h2 class="accessibility" id="navigationheadline">Navigation</h2>
-        <ul class="navigation-list">
-            <li>
-                <a href="" class="button" accesskey="l">Abmelden</a>
-            </li>
-        </ul>
-    </nav>
-</header>
+<jsp:include page="header.jsp" flush="true" />
 <div class="main-container">
     <jsp:include page="sidebar.jsp" flush="true" />
     <main aria-labelledby="productheadline" class="details-container">
         <div class="details-image-container">
-            <img class="details-image" src="../images/the_godfather.png" alt="">
+            <img class="details-image" src="../images/<%=product.getImageName() %>" alt="Bild von <%=product.getDescription() %>">
         </div>
-        <div data-product-id="ce510a73-408f-489c-87f9-94817d845773" class="details-data">
-            <h2 class="main-headline" id="productheadline">Der Pate (Film)</h2>
+        <div data-product-id="<%=product.getProductID() %>" class="details-data">
+            <h2 class="main-headline" id="productheadline"><%=product.getDescription() %></h2>
 
             <div class="auction-expired-text" style="display:none">
                 <p>
                     Diese Auktion ist bereits abgelaufen.
                     Das Produkt wurde um
-                    <span class="highest-bid">149,08 €</span> an
-                    <span class="highest-bidder">Jane Doe</span> verkauft.
+                    <span class="highest-bid"><%=product.getPriceString() %> €</span> an
+                    <span class="highest-bidder"><%=product.getHighestBidderString() %></span> verkauft.
                 </p>
             </div>
-            <p class="detail-time">Restzeit: <span data-end-time="2016,03,14,15,05,19,796"
+            <p class="detail-time">Restzeit: <span data-end-time="<%=product.getExpirationDateString() %>"
                                                    class="detail-rest-time js-time-left"></span>
             </p>
             <form class="bid-form" method="post" action="">
                 <label class="bid-form-field" id="highest-price">
-                    <span class="highest-bid">149,08 €</span>
-                    <span class="highest-bidder">Jane Doe</span>
+                    <span class="highest-bid"><%=product.getPriceString() %> €</span>
+                    <span class="highest-bidder"><%=product.getHighestBidderString() %></span>
                 </label>
                 <label class="accessibility" for="new-price"></label>
-                <input type="number" step="0.01" min="0" id="new-price" class="bid-form-field form-input"
+                <input type="number" step="0.01" min="<%=product.getPrice() %>" id="new-price" class="bid-form-field form-input"
                        name="new-price" required>
                 <p class="bid-error">Es gibt bereits ein höheres Gebot oder der Kontostand ist zu niedrig.</p>
                 <input type="submit" id="submit-price" class="bid-form-field button" name="submit-price" value="Bieten">
