@@ -103,11 +103,3 @@ function formatCurrency(x) {
     return x.toFixed(2).replace(".", $("body").data('decimal-separator')).replace(/\B(?=(\d{3})+(?!\d))/g, $("body").data('grouping-separator')) + "&nbsp;€";
 }
 
-// Depending on the setup of your server, servlet, and socket, you may have to
-// change the URL.
-var socket = new WebSocket("ws://localhost:8080/socket");
-socket.onmessage = function (event) {
-
-    /***  write your code here ***/
-
-};

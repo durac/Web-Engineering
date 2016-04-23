@@ -42,4 +42,10 @@ public class NotifierService {
     public void stop() {
         this.executor.shutdown();
     }
+    
+    
+    public Map<Session, HttpSession> getClients() {
+    	return clients;
+    }
+    
 }
