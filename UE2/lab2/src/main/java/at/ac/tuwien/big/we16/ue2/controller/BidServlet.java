@@ -42,7 +42,9 @@ public class BidServlet extends HttpServlet{
             LoginServlet.updateProduct(p);
             jo.addProperty("error",false);
             jo.addProperty("running",u.getRunning());
-            jo.addProperty("credit",u.getCredit());
+            jo.addProperty("credit",u.getCreditString());
+            jo.addProperty("bid",p.getPriceString());
+            jo.addProperty("bidder",p.getHighestBidderString());
         }
         else{
             jo.addProperty("error",true);

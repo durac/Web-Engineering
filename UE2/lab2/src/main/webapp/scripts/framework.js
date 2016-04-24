@@ -115,7 +115,9 @@ form.submit(function (ev) {
             }
             else{
                 $('.running-auctions-count').html(data.running);
-                $('.balance').html(data.credit);
+                $('.balance').html(data.credit+" &euro;");
+                $('.highest-bid').html(data.bid+" &euro;");
+                $('.highest-bidder').html(data.bidder);
             }
         }
     });

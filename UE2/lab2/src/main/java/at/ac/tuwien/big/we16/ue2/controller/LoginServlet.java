@@ -24,7 +24,6 @@ public class LoginServlet extends HttpServlet{
 
     @Override
     public void init() throws ServletException {
-        products = new ArrayList<Product>();
         users = new ArrayList<User>();
         User u1 = new User(1,"John","Doe","john@doe.com","john",1500,0,0,0);
         User u2 = new User(2,"Jane","Doe","jane@doe.com","jane",1500,0,0,0);
@@ -36,6 +35,23 @@ public class LoginServlet extends HttpServlet{
         users.add(u3);
         users.add(u4);
         users.add(u5);
+
+        products = new ArrayList<Product>();
+        JSONDataLoader.Music[] music = JSONDataLoader.getMusic();
+        JSONDataLoader.Movie[] movies = JSONDataLoader.getFilms();
+        JSONDataLoader.Book[] books = JSONDataLoader.getBooks();
+        for(JSONDataLoader.Music m: music) {
+            Product product = new Product(m.getProductID(),m.getAlbum_name(), 0, m.getExpirationDate(), m.getImg());
+            products.add(product);
+        }
+        for(JSONDataLoader.Movie m: movies){
+            Product product = new Product(m.getProductID(), m.getTitle(), 0, m.getExpirationDate(), m.getImg());
+            products.add(product);
+        }
+        for(JSONDataLoader.Book b: books){
+            Product product = new Product(b.getProductID(), b.getTitle(), 0, b.getExpirationDate(), b.getImg());
+            products.add(product);
+        }
     }
 
     @Override
@@ -56,23 +72,6 @@ public class LoginServlet extends HttpServlet{
         }
 
         HttpSession session = req.getSession(true);
-
-        JSONDataLoader.Music[] music = JSONDataLoader.getMusic();
-        JSONDataLoader.Movie[] movies = JSONDataLoader.getFilms();
-        JSONDataLoader.Book[] books = JSONDataLoader.getBooks();
-
-        for(JSONDataLoader.Music m: music) {
-            Product product = new Product(m.getProductID(),m.getAlbum_name(), 0, m.getExpirationDate(), m.getImg());
-            products.add(product);
-        }
-        for(JSONDataLoader.Movie m: movies){
-            Product product = new Product(m.getProductID(), m.getTitle(), 0, m.getExpirationDate(), m.getImg());
-            products.add(product);
-        }
-        for(JSONDataLoader.Book b: books){
-            Product product = new Product(b.getProductID(), b.getTitle(), 0, b.getExpirationDate(), b.getImg());
-            products.add(product);
-        }
 
         session.setAttribute("user",user);
         session.setAttribute("products",products);

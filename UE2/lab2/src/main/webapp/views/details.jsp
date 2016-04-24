@@ -25,7 +25,7 @@
                 <p>
                     Diese Auktion ist bereits abgelaufen.
                     Das Produkt wurde um
-                    <span class="highest-bid"><%=product.getPriceString() %> €</span> an
+                    <span class="highest-bid"><%=product.getPriceString() %> &euro;</span> an
                     <span class="highest-bidder"><%=product.getHighestBidderString() %></span> verkauft.
                 </p>
             </div>
