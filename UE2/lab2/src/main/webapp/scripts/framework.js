@@ -103,3 +103,22 @@ function formatCurrency(x) {
     return x.toFixed(2).replace(".", $("body").data('decimal-separator')).replace(/\B(?=(\d{3})+(?!\d))/g, $("body").data('grouping-separator')) + "&nbsp;€";
 }
 
+var form = $('.bid-form');
+form.submit(function (ev) {
+    $.ajax({
+        type: form.attr('method'),
+        url: form.attr('action'),
+        data: form.serialize(),
+        success: function (data) {
+            if(data.error == true){
+                $('.bid-error').show();
+            }
+            else{
+                $('.running-auctions-count').html(data.running);
+                $('.balance').html(data.credit);
+            }
+        }
+    });
+
+    ev.preventDefault();
+});

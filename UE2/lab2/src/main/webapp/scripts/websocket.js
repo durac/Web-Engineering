@@ -1,4 +1,4 @@
-
+ 
 function test() {
 	socket.send("new_bid ae-234f 120");
 }

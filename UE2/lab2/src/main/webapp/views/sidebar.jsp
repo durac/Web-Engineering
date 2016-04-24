@@ -8,21 +8,21 @@
             <dd class="user-name"><%=user.getForename()%> <%=user.getLastname() %></dd>
             <dt>Kontostand:</dt>
             <dd>
-                <span class="balance"><%=user.getCredit() %> &euro;</span>
+                <span class="balance"><%=user.getCreditString() %> &euro;</span>
             </dd>
             <dt>Laufend:</dt>
             <dd>
-                <span class="running-auctions-count">0</span>
+                <span class="running-auctions-count"><%=user.getRunning() %></span>
                 <span class="auction-label" data-plural="Auktionen" data-singular="Auktion">Auktionen</span>
             </dd>
             <dt>Gewonnen:</dt>
             <dd>
-                <span class="won-auctions-count">0</span>
+                <span class="won-auctions-count"><%=user.getWon() %></span>
                 <span class="auction-label" data-plural="Auktionen" data-singular="Auktion">Auktionen</span>
             </dd>
             <dt>Verloren:</dt>
             <dd>
-                <span class="lost-auctions-count">0</span>
+                <span class="lost-auctions-count"><%=user.getLost() %></span>
                 <span class="auction-label" data-plural="Auktionen" data-singular="Auktion">Auktionen</span>
             </dd>
         </dl>

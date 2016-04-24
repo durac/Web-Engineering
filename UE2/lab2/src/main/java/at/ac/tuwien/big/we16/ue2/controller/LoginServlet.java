@@ -26,11 +26,11 @@ public class LoginServlet extends HttpServlet{
     public void init() throws ServletException {
         products = new ArrayList<Product>();
         users = new ArrayList<User>();
-        User u1 = new User(1,"John","Doe","john@doe.com","john",1500);
-        User u2 = new User(2,"Jane","Doe","jane@doe.com","jane",1500);
-        User u3 = new User(3,"Dominik","Schwarz","dominik@schwarz.com","dominik",1500);
-        User u4 = new User(4,"Stefan","Neubauer","stefan@neubauer.com","stefan",1500);
-        User u5 = new User(5,"Raquel","Sima","raquel@sima.com","raquel",1500);
+        User u1 = new User(1,"John","Doe","john@doe.com","john",1500,0,0,0);
+        User u2 = new User(2,"Jane","Doe","jane@doe.com","jane",1500,0,0,0);
+        User u3 = new User(3,"Dominik","Schwarz","dominik@schwarz.com","dominik",1500,0,0,0);
+        User u4 = new User(4,"Stefan","Neubauer","stefan@neubauer.com","stefan",1500,0,0,0);
+        User u5 = new User(5,"Raquel","Sima","raquel@sima.com","raquel",1500,0,0,0);
         users.add(u1);
         users.add(u2);
         users.add(u3);
@@ -87,4 +87,23 @@ public class LoginServlet extends HttpServlet{
         return users;
     }
 
+    public static void updateUser(User u) {
+        for(User user: users){
+            if (user.getUserID()==u.getUserID()){
+                users.remove(user);
+                users.add(u);
+                break;
+            }
+        }
+    }
+
+    public static void updateProduct(Product p) {
+        for(Product product: products){
+            if (product.getProductID().equals(p.getProductID())){
+                products.remove(product);
+                products.add(p);
+                break;
+            }
+        }
+    }
 }

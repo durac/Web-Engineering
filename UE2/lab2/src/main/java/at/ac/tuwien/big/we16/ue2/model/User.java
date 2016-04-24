@@ -5,13 +5,13 @@ package at.ac.tuwien.big.we16.ue2.model;
  */
 public class User {
 
-    private int userID;
+    private int userID, running, won, lost;
     private String forename, lastname, email, password;
     private double credit;
 
     public User(){}
 
-    public User(int userID, String forename, String lastname, String email, String password, double credit) {
+    public User(int userID, String forename, String lastname, String email, String password, double credit, int running, int won, int lost) {
         this.userID = userID;
 
         this.forename = forename;
@@ -19,6 +19,43 @@ public class User {
         this.email = email;
         this.password = password;
         this.credit = credit;
+    }
+
+
+    public void decreaseRunning() {
+        this.running--;
+    }
+
+    public void decreaseWon() {
+        this.won--;
+    }
+
+    public int getWon() {
+        return won;
+    }
+
+    public int getLost() {
+        return lost;
+    }
+
+    public int getRunning() {
+        return running;
+    }
+
+    public void decreaseLost() {
+        this.lost--;
+    }
+
+    public void increaseRunning() {
+        this.running++;
+    }
+
+    public void increaseWon() {
+        this.won++;
+    }
+
+    public void increaseLost() {
+        this.lost++;
     }
 
     public int getUserID() {
@@ -67,7 +104,16 @@ public class User {
         return credit;
     }
 
+    public String getCreditString() {
+        String result = String.format("%.2f", credit);
+        return result;
+    }
+
     public void setCredit(double credit) {
         this.credit = credit;
+    }
+
+    public void increaseCredit(double amount) {
+        this.credit += amount;
     }
 }

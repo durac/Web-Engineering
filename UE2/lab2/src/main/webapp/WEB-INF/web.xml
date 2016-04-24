@@ -31,6 +31,15 @@
         <url-pattern>/LogoutServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Bid</servlet-name>
+        <servlet-class>at.ac.tuwien.big.we16.ue2.controller.BidServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Bid</servlet-name>
+        <url-pattern>/BidServlet</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>views/login.jsp</welcome-file>
     </welcome-file-list>
