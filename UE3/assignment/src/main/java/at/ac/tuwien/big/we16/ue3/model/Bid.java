@@ -1,15 +1,26 @@
 package at.ac.tuwien.big.we16.ue3.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Bid {
 
+    @Id
     private String id;
+    @Column(nullable=false)
     private int amount;
+    @ManyToOne(optional=false)
     private User user;
+    @ManyToOne(optional=false)
     private Product product;
 
-    public Bid(int centAmount, User user) {
+    public Bid(int centAmount, User user, Product product) {
         amount = centAmount;
         this.user = user;
+        this.product = product;
+    }
+
+    public Bid() {
     }
 
     public String getId() {

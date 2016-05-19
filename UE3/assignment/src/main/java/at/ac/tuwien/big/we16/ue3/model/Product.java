@@ -2,23 +2,59 @@ package at.ac.tuwien.big.we16.ue3.model;
 
 import at.ac.tuwien.big.we16.ue3.exception.InvalidBidException;
 
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Entity
 public class Product {
+
+    @Id
     private String id;
+    @Column(nullable=false)
     private String name;
+    @Column
     private String image;
+    @Column
     private String imageAlt;
+    @Column(nullable=false)
     private Date auctionEnd;
+    @Enumerated(value = EnumType.STRING)
     private ProductType type;
+    @Column
     private int year;
+    @Column
     private String producer;
+    @Column
     private boolean expired;
-    private List<RelatedProduct> relatedProducts;
-    private List<Bid> bids;
+    @OneToMany(mappedBy="product",targetEntity=RelatedProduct.class, fetch=FetchType.EAGER)
+    private List<RelatedProduct> relatedProducts = new ArrayList<RelatedProduct>();
+    @OneToMany(mappedBy="product",targetEntity=Bid.class, fetch=FetchType.EAGER)
+    private List<Bid> bids = new ArrayList<Bid>();
+
+    public Product() {
+    }
+
+    public Product(String id, String name, Date auctionEnd) {
+        this.id = id;
+        this.name = name;
+        this.auctionEnd = auctionEnd;
+    }
+
+    public Product(String id, String name, String image, String imageAlt, Date auctionEnd, ProductType type, int year, String producer, boolean expired) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        this.imageAlt = imageAlt;
+        this.auctionEnd = auctionEnd;
+        this.type = type;
+        this.year = year;
+        this.producer = producer;
+        this.expired = expired;
+    }
 
     public Bid getHighestBid() {
         Bid highest = null;

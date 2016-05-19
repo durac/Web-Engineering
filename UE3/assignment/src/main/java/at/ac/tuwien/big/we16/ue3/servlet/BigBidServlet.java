@@ -36,19 +36,17 @@ public class BigBidServlet extends HttpServlet {
 
     @Override
     public void init() {
-        UserService userService = new UserService();
+        UserService userService = ServiceFactory.getUserService();
         this.authService = new AuthService(userService);
         this.productController = new ProductController(ServiceFactory.getProductService(), this.authService, new BidService());
         this.authController = new AuthController(this.authService);
         this.userController = new UserController(userService, this.authService);
         (new DataGenerator()).generateData();
-        //TODO uncomment the following code and possibly change the email address
-//        try {
-//            
-//             ServiceFactory.getComputerUserService().start(userService.getUserByEmail("jane.doe@example.com"));
-//        } catch (UserNotFoundException e) {
-//            // ignore
-//        }
+        try {
+             ServiceFactory.getComputerUserService().start(userService.getUserByEmail("jane.doe@example.com"));
+        } catch (UserNotFoundException e) {
+            // ignore
+        }
     }
 
     @Override
@@ -106,7 +104,7 @@ public class BigBidServlet extends HttpServlet {
                     this.authController.postLogin(request, response);
                     break;
                 case REGISTRATION_PATH:
-                        this.userController.postRegister(request, response);
+                    this.userController.postRegister(request, response);
                     break;
                 default:
                     response.sendError(404);
