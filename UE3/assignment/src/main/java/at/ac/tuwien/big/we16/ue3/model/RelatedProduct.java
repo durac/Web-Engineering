@@ -16,6 +16,12 @@ public class RelatedProduct {
     public RelatedProduct() {
     }
 
+    public RelatedProduct(String id, String name, Product product) {
+        this.id=id;
+        this.name=name;
+        this.product=product;
+    }
+
     public RelatedProduct(String name) {
         this.name = name;
     }

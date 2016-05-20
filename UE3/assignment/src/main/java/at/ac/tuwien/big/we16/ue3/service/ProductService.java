@@ -3,6 +3,7 @@ package at.ac.tuwien.big.we16.ue3.service;
 import at.ac.tuwien.big.we16.ue3.exception.ProductNotFoundException;
 import at.ac.tuwien.big.we16.ue3.model.Bid;
 import at.ac.tuwien.big.we16.ue3.model.Product;
+import at.ac.tuwien.big.we16.ue3.model.RelatedProduct;
 import at.ac.tuwien.big.we16.ue3.model.User;
 
 import javax.persistence.EntityManager;
@@ -69,5 +70,11 @@ public class ProductService {
             }
         }
         return newlyExpiredProducts;
+    }
+
+    public void createRelatedProduct(RelatedProduct product) {
+        em.getTransaction().begin();
+        em.persist(product);
+        em.getTransaction().commit();
     }
 }

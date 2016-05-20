@@ -22,6 +22,7 @@ public class UserService {
     }
 
     public void updateUser(User user) {
+        System.out.println(user.getConvertedBalance());
         em.getTransaction().begin();
         em.refresh(user);
         em.getTransaction().commit();

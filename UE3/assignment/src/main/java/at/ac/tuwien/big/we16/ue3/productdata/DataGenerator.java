@@ -1,13 +1,26 @@
 package at.ac.tuwien.big.we16.ue3.productdata;
 
+import at.ac.tuwien.big.we.dbpedia.api.DBPediaService;
+import at.ac.tuwien.big.we.dbpedia.api.SelectQueryBuilder;
+import at.ac.tuwien.big.we.dbpedia.vocabulary.DBPedia;
+import at.ac.tuwien.big.we.dbpedia.vocabulary.DBPediaOWL;
 import at.ac.tuwien.big.we16.ue3.model.Product;
 import at.ac.tuwien.big.we16.ue3.model.ProductType;
+import at.ac.tuwien.big.we16.ue3.model.RelatedProduct;
 import at.ac.tuwien.big.we16.ue3.model.User;
 import at.ac.tuwien.big.we16.ue3.service.ProductService;
 import at.ac.tuwien.big.we16.ue3.service.ServiceFactory;
 import at.ac.tuwien.big.we16.ue3.service.UserService;
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.sparql.vocabulary.FOAF;
+import com.hp.hpl.jena.vocabulary.RDF;
+import com.hp.hpl.jena.vocabulary.RDFS;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.UUID;
 
 public class DataGenerator {
 
@@ -49,6 +62,54 @@ public class DataGenerator {
     }
 
     private void insertRelatedProducts() {
-        // TODO load related products from dbpedia and write them to the database
+
+        // Check if DBpedia is available
+        if (!DBPediaService.isAvailable()) {
+            return;
+        }
+
+        for(Product p : ServiceFactory.getProductService().getAllProducts()) {
+            String searchName = p.getProducer();
+            searchName = searchName.replace(' ','_');
+
+            Resource name = DBPediaService.loadStatements(DBPedia.createResource(searchName));
+
+            SelectQueryBuilder query = null;
+            switch(p.getType()){
+                case FILM:
+                    query = DBPediaService.createQueryBuilder()
+                            .setLimit(5)
+                            .addWhereClause(RDF.type, DBPediaOWL.Film)
+                            .addPredicateExistsClause(FOAF.name)
+                            .addWhereClause(DBPediaOWL.director, name)
+                            .addFilterClause(RDFS.label, Locale.ENGLISH);
+                    break;
+                case BOOK:
+                    query = DBPediaService.createQueryBuilder()
+                            .setLimit(5)
+                            .addWhereClause(RDF.type, DBPediaOWL.Book)
+                            .addPredicateExistsClause(FOAF.name)
+                            .addWhereClause(DBPediaOWL.author, name)
+                            .addFilterClause(RDFS.label, Locale.ENGLISH);
+                    break;
+                case ALBUM:
+                    query = DBPediaService.createQueryBuilder()
+                            .setLimit(5)
+                            .addWhereClause(RDF.type, DBPediaOWL.Album)
+                            .addPredicateExistsClause(FOAF.name)
+                            .addWhereClause(DBPediaOWL.artist, name)
+                            .addFilterClause(RDFS.label, Locale.ENGLISH);
+                    break;
+            }
+
+            Model products = DBPediaService.loadStatements(query.toQueryString());
+            List<String> relatesProducts = DBPediaService.getResourceNames(products, Locale.ENGLISH);
+            for(String s: relatesProducts){
+                RelatedProduct rp = new RelatedProduct(UUID.randomUUID().toString(),s,p);
+                p.addRelatedProduct(rp);
+                //ServiceFactory.getProductService().createRelatedProduct(rp);
+            }
+        }
     }
+
 }

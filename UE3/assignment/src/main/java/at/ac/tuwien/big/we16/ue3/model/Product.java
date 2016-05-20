@@ -74,6 +74,10 @@ public class Product {
     public void addBid(Bid bid) throws InvalidBidException {
         this.bids.add(bid);
     }
+    public void addRelatedProduct(RelatedProduct product){
+        this.relatedProducts.add(product);
+    }
+
 
     public boolean hasExpired() {
         return expired;
@@ -139,6 +143,14 @@ public class Product {
 
     public List<RelatedProduct> getRelatedProducts() {
         return relatedProducts;
+    }
+
+    public String getProducer() {
+        return producer;
+    }
+
+    public void setProducer(String producer) {
+        this.producer = producer;
     }
 
 }

@@ -9,6 +9,7 @@ public abstract class ServiceFactory {
     private static NotifierService notifierService;
     private static ComputerUserService computerUserService;
     private static UserService userService;
+
     private static EntityManager em;
 
     public static EntityManager getEntityManager() {

@@ -69,6 +69,11 @@
             <artifactId>twitter4j-core</artifactId>
             <version>4.0.4</version>
         </dependency>
+        <dependency>
+            <groupId>at.ac.tuwien.big.we16</groupId>
+            <artifactId>we16-ue3</artifactId>
+            <version>0.0.1</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
