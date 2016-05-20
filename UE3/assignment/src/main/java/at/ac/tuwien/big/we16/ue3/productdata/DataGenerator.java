@@ -19,13 +19,13 @@ public class DataGenerator {
 
     private void generateUserData() {
         UserService userService = ServiceFactory.getUserService();
-        User u1 = new User("1","Herr","Dominik","Schwarz","dominik@schwarz.com","schwarz",new Date(1994,7,1),1500,0,0,0);
+        User u1 = new User("1","Herr","Dominik","Schwarz","dominik@schwarz.com","schwarz",new Date(1994,7,1),150000,0,0,0);
         userService.createUser(u1);
-        User u2 = new User("2","Frau","Raquel","Sima","raquel@sima.com","sima",new Date(1995,8,1),1500,0,0,0);
+        User u2 = new User("2","Frau","Raquel","Sima","raquel@sima.com","sima",new Date(1995,8,1),150000,0,0,0);
         userService.createUser(u2);
-        User u3 = new User("3","Herr","Stefan","Neubauer","stefan@neubauer.com","neubauer",new Date(1992,9,1),1500,0,0,0);
+        User u3 = new User("3","Herr","Stefan","Neubauer","stefan@neubauer.com","neubauer",new Date(1992,9,1),150000,0,0,0);
         userService.createUser(u3);
-        User u4 = new User("4","Frau","Jane","Doe","jane.doe@example.com","password",new Date(1990,9,1),1500,0,0,0);
+        User u4 = new User("4","Frau","Jane","Doe","jane.doe@example.com","password",new Date(1990,9,1),150000,0,0,0);
         userService.createUser(u4);
     }
 

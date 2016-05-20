@@ -28,11 +28,9 @@ public class UserService {
     }
 
     public User getUserByEmail(String email) throws UserNotFoundException {
-        em.getTransaction().begin();
         Query q = em.createQuery("select u from User u where u.email=:email");
         q.setParameter("email",email);
         List<User> list = q.getResultList();
-        em.getTransaction().commit();
         if(list.isEmpty()){
             throw new UserNotFoundException();
         }

@@ -13,7 +13,7 @@
 
 <main aria-labelledby="productheadline" class="details-container">
         <div class="details-image-container">
-            <img class="details-image" src="/images/${product.image}" alt="${product.imageAlt}">
+            <img class="details-image" src="../images/${product.image}" alt="${product.imageAlt}">
         </div>
         <div data-product-id="${product.id}" class="details-data">
             <h2 class="main-headline" id="productheadline">${product.name}</h2>

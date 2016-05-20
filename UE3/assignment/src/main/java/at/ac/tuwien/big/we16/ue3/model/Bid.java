@@ -14,7 +14,8 @@ public class Bid {
     @ManyToOne(optional=false)
     private Product product;
 
-    public Bid(int centAmount, User user, Product product) {
+    public Bid(String id, int centAmount, User user, Product product) {
+        this.id=id;
         amount = centAmount;
         this.user = user;
         this.product = product;

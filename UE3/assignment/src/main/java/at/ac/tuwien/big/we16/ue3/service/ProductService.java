@@ -33,15 +33,17 @@ public class ProductService {
 
 
     public Collection<Product> getAllProducts() {
-        em.getTransaction().begin();
         Query q = em.createQuery("select p from Product p");
         List<Product> list = q.getResultList();
-        em.getTransaction().commit();
         return list;
     }
 
     public Product getProductById(String id) throws ProductNotFoundException {
-        return em.find(Product.class,id);
+        Product p = em.find(Product.class,id);
+        if(p == null){
+            throw new ProductNotFoundException();
+        }
+        return p;
     }
 
     public Collection<Product> checkProductsForExpiration() {

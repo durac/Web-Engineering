@@ -8,14 +8,14 @@
     <meta charset="utf-8">
     <title>BIG Bid - ${param.title}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
-<body data-decimal-separator="${decimalSeparator}" data-grouping-separator="${groupingSeparator}">
+<body data-decimal-separator="," data-grouping-separator=".">
 
 <a href="#productsheadline" class="accessibility">Zum Inhalt springen</a>
 
 <header role="banner" aria-labelledby="bannerheadline">
-    <img class="title-image" src="images/big-logo-small.png" alt="BIG Bid logo">
+    <img class="title-image" src="../images/big-logo-small.png" alt="BIG Bid logo">
     <h1 class="header-title" id="bannerheadline">
         BIG Bid
     </h1>

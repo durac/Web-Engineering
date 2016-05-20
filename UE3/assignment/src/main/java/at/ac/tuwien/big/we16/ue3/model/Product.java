@@ -30,13 +30,10 @@ public class Product {
     private String producer;
     @Column
     private boolean expired;
-    @OneToMany(mappedBy="product",targetEntity=RelatedProduct.class, fetch=FetchType.EAGER)
-    private List<RelatedProduct> relatedProducts = new ArrayList<RelatedProduct>();
-    @OneToMany(mappedBy="product",targetEntity=Bid.class, fetch=FetchType.EAGER)
-    private List<Bid> bids = new ArrayList<Bid>();
-
-    public Product() {
-    }
+    @OneToMany(mappedBy="product", fetch=FetchType.EAGER)
+    private List<RelatedProduct> relatedProducts = new ArrayList<>();
+    @OneToMany(mappedBy="product", fetch=FetchType.EAGER)
+    private List<Bid> bids = new ArrayList<>();
 
     public Product(String id, String name, Date auctionEnd) {
         this.id = id;
@@ -54,6 +51,9 @@ public class Product {
         this.year = year;
         this.producer = producer;
         this.expired = expired;
+    }
+
+    public Product() {
     }
 
     public Bid getHighestBid() {

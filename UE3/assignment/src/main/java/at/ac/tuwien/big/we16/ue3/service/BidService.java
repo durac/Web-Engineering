@@ -8,6 +8,7 @@ import at.ac.tuwien.big.we16.ue3.model.User;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public class BidService {
 
@@ -43,9 +44,9 @@ public class BidService {
                 decreaseAmount = centAmount - product.getHighestBid().getAmount();
             }
             else {
-                User u = product.getHighestBid().getUser();
-                u.increaseBalance(product.getHighestBid().getAmount());
-                ServiceFactory.getUserService().updateUser(u);
+                highestBidder = product.getHighestBid().getUser();
+                highestBidder.increaseBalance(product.getHighestBid().getAmount());
+                ServiceFactory.getUserService().updateUser(highestBidder);
                 ServiceFactory.getNotifierService().notifyReimbursement(highestBidder);
             }
         }
@@ -55,7 +56,8 @@ public class BidService {
         }
 
         user.decreaseBalance(decreaseAmount);
-        Bid bid = new Bid(centAmount, user, product);
+        Bid bid = new Bid(UUID.randomUUID().toString(), centAmount, user, product);
+        product.addBid(bid);
         em.getTransaction().begin();
         em.persist(bid);
         em.getTransaction().commit();
