@@ -7,8 +7,6 @@ import at.ac.tuwien.big.we16.ue3.model.Product;
 import at.ac.tuwien.big.we16.ue3.model.User;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.math.BigDecimal;
 import java.util.UUID;
 
@@ -17,7 +15,7 @@ public class BidService {
     private EntityManager em;
 
     public BidService() {
-        this.em = ServiceFactory.getEntityManager();
+        this.em = ServiceFactory.getEntityManagerFactory().createEntityManager();
     }
 
 
@@ -74,5 +72,9 @@ public class BidService {
         } catch (ArithmeticException e) {
             throw new InvalidBidException();
         }
+    }
+
+    public void close(){
+        em.close();
     }
 }

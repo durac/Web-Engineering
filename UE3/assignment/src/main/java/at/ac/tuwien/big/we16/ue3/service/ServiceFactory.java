@@ -1,6 +1,5 @@
 package at.ac.tuwien.big.we16.ue3.service;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -10,14 +9,13 @@ public abstract class ServiceFactory {
     private static ComputerUserService computerUserService;
     private static UserService userService;
 
-    private static EntityManager em;
+    private static EntityManagerFactory emf;
 
-    public static EntityManager getEntityManager() {
-        if(em == null){
-            EntityManagerFactory emf = Persistence.createEntityManagerFactory("defaultPersistenceUnit");
-            em = emf.createEntityManager();
+    public static EntityManagerFactory getEntityManagerFactory() {
+        if(emf == null) {
+            emf = Persistence.createEntityManagerFactory("defaultPersistenceUnit");
         }
-        return em;
+        return emf;
     }
 
     public static ProductService getProductService() {

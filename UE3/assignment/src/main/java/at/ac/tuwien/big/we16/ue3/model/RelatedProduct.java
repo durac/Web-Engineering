@@ -6,7 +6,6 @@ import javax.persistence.*;
 public class RelatedProduct {
 
     @Id
-    @GeneratedValue
     private String id;
     @Column(nullable=false)
     private String name;

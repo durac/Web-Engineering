@@ -12,19 +12,19 @@ public class UserService {
     private EntityManager em;
 
     public UserService() {
-        this.em = ServiceFactory.getEntityManager();
+        this.em = ServiceFactory.getEntityManagerFactory().createEntityManager();
     }
 
-    public void createUser(User user) {
+
+    public synchronized void createUser(User user) {
         em.getTransaction().begin();
         em.persist(user);
         em.getTransaction().commit();
     }
 
-    public void updateUser(User user) {
-        System.out.println(user.getConvertedBalance());
+    public synchronized void updateUser(User user) {
         em.getTransaction().begin();
-        em.refresh(user);
+        em.merge(user);
         em.getTransaction().commit();
     }
 
@@ -36,6 +36,10 @@ public class UserService {
             throw new UserNotFoundException();
         }
         return list.get(0);
+    }
+
+    public void close(){
+        em.close();
     }
 
 }

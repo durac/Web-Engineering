@@ -17,18 +17,18 @@ public class ProductService {
     private EntityManager em;
 
     public ProductService() {
-        this.em = ServiceFactory.getEntityManager();
+        this.em = ServiceFactory.getEntityManagerFactory().createEntityManager();
     }
 
-    public void createProduct(Product product) {
+    public synchronized void createProduct(Product product) {
         em.getTransaction().begin();
         em.persist(product);
         em.getTransaction().commit();
     }
 
-    public void updateProduct(Product product) {
+    public synchronized void updateProduct(Product product) {
         em.getTransaction().begin();
-        em.refresh(product);
+        em.merge(product);
         em.getTransaction().commit();
     }
 
@@ -72,9 +72,13 @@ public class ProductService {
         return newlyExpiredProducts;
     }
 
-    public void createRelatedProduct(RelatedProduct product) {
+    public synchronized void createRelatedProduct(RelatedProduct product) {
         em.getTransaction().begin();
         em.persist(product);
         em.getTransaction().commit();
+    }
+
+    public void close(){
+        em.close();
     }
 }

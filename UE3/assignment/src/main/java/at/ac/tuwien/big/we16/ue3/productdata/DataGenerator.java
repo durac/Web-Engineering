@@ -107,7 +107,7 @@ public class DataGenerator {
             for(String s: relatesProducts){
                 RelatedProduct rp = new RelatedProduct(UUID.randomUUID().toString(),s,p);
                 p.addRelatedProduct(rp);
-                //ServiceFactory.getProductService().createRelatedProduct(rp);
+                ServiceFactory.getProductService().createRelatedProduct(rp);
             }
         }
     }
