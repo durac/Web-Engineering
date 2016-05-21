@@ -65,6 +65,7 @@ public class ProductService {
                         }
                         ServiceFactory.getUserService().updateUser(user);
                     }
+                    ServiceFactory.getNotifierService().sendAuctionToBigBidBoard(product);
                 }
                 this.updateProduct(product);
             }

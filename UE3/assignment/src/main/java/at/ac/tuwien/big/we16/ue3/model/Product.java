@@ -74,6 +74,7 @@ public class Product {
     public void addBid(Bid bid) throws InvalidBidException {
         this.bids.add(bid);
     }
+
     public void addRelatedProduct(RelatedProduct product){
         this.relatedProducts.add(product);
     }

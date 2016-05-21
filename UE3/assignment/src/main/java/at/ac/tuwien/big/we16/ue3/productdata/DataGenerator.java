@@ -48,15 +48,18 @@ public class DataGenerator {
         JSONDataLoader.Movie[] movies = JSONDataLoader.getFilms();
         JSONDataLoader.Book[] books = JSONDataLoader.getBooks();
         for(JSONDataLoader.Music m: music) {
-            Product product = new Product(m.getProductID(),m.getAlbum_name(), m.getImg(),"Das ist der alt Text",m.getExpirationDate(), ProductType.ALBUM, Integer.parseInt(m.getYear()), m.getArtist(), m.getExpirationDate().after(new Date()));
+            Product product = new Product(m.getProductID(),m.getAlbum_name(), m.getImg(),"Das ist der alt Text",m.getExpirationDate(), ProductType.ALBUM,
+                    Integer.parseInt(m.getYear()), m.getArtist(), false);
             productService.createProduct(product);
         }
         for(JSONDataLoader.Movie m: movies){
-            Product product = new Product(m.getProductID(),m.getTitle(), m.getImg(),"Das ist der alt Text",m.getExpirationDate(), ProductType.FILM, Integer.parseInt(m.getYear()), m.getDirector(), m.getExpirationDate().after(new Date()));
+            Product product = new Product(m.getProductID(),m.getTitle(), m.getImg(),"Das ist der alt Text",m.getExpirationDate(), ProductType.FILM,
+                    Integer.parseInt(m.getYear()), m.getDirector(), false);
             productService.createProduct(product);
         }
         for(JSONDataLoader.Book b: books){
-            Product product = new Product(b.getProductID(),b.getTitle(), b.getImg(),"Das ist der alt Text",b.getExpirationDate(), ProductType.BOOK, Integer.parseInt(b.getYear()), b.getAuthor(), b.getExpirationDate().after(new Date()));
+            Product product = new Product(b.getProductID(),b.getTitle(), b.getImg(),"Das ist der alt Text",b.getExpirationDate(), ProductType.BOOK,
+                    Integer.parseInt(b.getYear()), b.getAuthor(), false);
             productService.createProduct(product);
         }
     }
