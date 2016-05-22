@@ -48,5 +48,6 @@
 </footer>
 <script src="/scripts/jquery.js"></script>
 <script src="/scripts/framework.js"></script>
+<script src="/scripts/websocket.js"></script>
 </body>
 </html>

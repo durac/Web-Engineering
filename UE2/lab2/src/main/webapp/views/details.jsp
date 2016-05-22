@@ -33,6 +33,12 @@
                                                    class="detail-rest-time js-time-left"></span>
             </p>
 
+			<%--
+			<p id="demo"> Hier wird Text mit JS eingefuegt </p>
+			<p class="demo2"> Hier wird auch Text mit JS eingefuegt </p>
+			<button onclick="test()">click me!</button>
+			--%>
+
             <form class="bid-form" method="post" action="/BidServlet">
                 <label class="bid-form-field" id="highest-price">
                     <span class="highest-bid"><%=product.getPriceString() %> €</span>

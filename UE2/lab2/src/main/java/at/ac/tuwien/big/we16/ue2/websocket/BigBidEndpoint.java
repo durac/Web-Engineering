@@ -46,7 +46,22 @@ public class BigBidEndpoint {
      * @param s
      */
     @OnMessage
-	public void onMessage(String message, Session s) {
+	public void onMessage(String message) {
+    	
+    	
+    
+    	Map<Session, HttpSession> clients = notifierService.getClients();
+    	for(Session p : clients.keySet()) {				
+			RemoteEndpoint.Basic endpoint = p.getBasicRemote();
+			try {
+				endpoint.sendText(message);
+			}
+			catch(IOException e) {
+				//maybe do something else here
+				e.printStackTrace();
+			}
+		}
+    	/*
     	String[] tokens = message.split(" ");
 		if(tokens[0].equals("new_bid")) {
 			
@@ -54,11 +69,12 @@ public class BigBidEndpoint {
 			String price = tokens[2];
 						
 			Map<Session, HttpSession> clients = notifierService.getClients();
-			HttpSession bidderSession = clients.get(s);
-			User bidder = (User) bidderSession.getAttribute("user");
-			String user_name = bidder.getForename() + " " + bidder.getLastname();
+			//HttpSession bidderSession = clients.get(s);
+			//User bidder = (User) bidderSession.getAttribute("user");
+			//String user_name = bidder.getForename() + " " + bidder.getLastname();
 			
-			String send_message = product_id + " " + user_name + " " + price;
+			String send_message = "new_bid" + " " + product_id + " "
+			+ user_name + " " + price;
 			for(Session p : clients.keySet()) {				
 				RemoteEndpoint.Basic endpoint = p.getBasicRemote();
 				try {
@@ -71,8 +87,12 @@ public class BigBidEndpoint {
 			}				
 		}
 		else if(tokens[0].equals("expired")) {
-			//todo
-		}				
+			String product_id = tokens[1];
+			String user_id = tokens[2];
+			String account = tokens[3];
+			
+		}
+		*/				
 	}
     
     
