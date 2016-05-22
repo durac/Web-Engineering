@@ -1,13 +1,18 @@
 package at.ac.tuwien.big.we16.ue3.controller;
 
 import at.ac.tuwien.big.we16.ue3.model.User;
+import at.ac.tuwien.big.we16.ue3.model.RegistrationForm;
 import at.ac.tuwien.big.we16.ue3.service.AuthService;
 import at.ac.tuwien.big.we16.ue3.service.UserService;
+
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class UserController {
     private final UserService userService;
@@ -23,15 +28,66 @@ public class UserController {
             response.sendRedirect("/");
             return;
         }
+        request.setAttribute("form", new RegistrationForm());
         request.getRequestDispatcher("/views/registration.jsp").forward(request, response);
     }
 
     // TODO validation of user data
     public void postRegister(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        User user = new User();
-        this.userService.createUser(user);
-        this.authService.login(request.getSession(), user);
-        response.sendRedirect("/");
+    	
+    	
+    	RegistrationForm form = new RegistrationForm();
+    	boolean isvalid = form.setAndValidate(
+    			request.getParameter("salutation"),
+    			request.getParameter("firstname"),
+    			request.getParameter("lastname"),
+    			request.getParameter("dateofbirth"),
+    			request.getParameter("email"),
+    			request.getParameter("password"),
+    			request.getParameter("streetAndNumber"),
+    			request.getParameter("postcodeAndCity"),
+    			request.getParameter("country"));
+   
+    	
+    	
+    	
+    	
+    	
+    		
+    		
+  
+    	
+    	if(!isvalid) {
+	    	request.setAttribute("form", form);
+	    	request.getRequestDispatcher("./views/registration.jsp").forward(request, response);
+    	}
+    	else {
+    		SimpleDateFormat dateformat = new SimpleDateFormat("dd.MM.yyyy");
+    		try {
+    			Date datum = dateformat.parse(request.getParameter("dateofbirth"));
+    		}
+    		catch (Exception e) {
+    			e.printStackTrace();
+    		}
+    		
+	    	User user = new User();
+	    	/*
+	    			007,
+	    			request.getParameter("salutation"),
+	    			request.getParameter("firstname"),
+	    			request.getParameter("lastname"),
+	    			request.getParameter("email"),
+	    			request.getParameter("password"),
+	    			datum,
+	    			1500,
+	    			0,
+	    			0,
+	    			0);
+	    	*/
+	        this.userService.createUser(user);
+	        this.authService.login(request.getSession(), user);
+	        response.sendRedirect("/");
+    	}
     }
 
 }

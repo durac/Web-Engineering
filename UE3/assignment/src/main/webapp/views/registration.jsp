@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setBundle basename="messages" />
+<jsp:useBean id="form" scope="request" type="at.ac.tuwien.big.we16.ue3.model.RegistrationForm"/>
 <jsp:include page='partials/header.jsp'>
     <jsp:param name="title" value="Registrieren" />
     <jsp:param name="showLogin" value="true" />
@@ -26,32 +27,37 @@
                 <label class="form-label" for="firstname-input">
                     Vorname *
                 </label>
-                <input type="text" name="firstname" id="firstname-input" class="form-input">
+                <input type="text" name="firstname" id="firstname-input" class="form-input" value="${form.firstname}">
             </div>
+            <span class="error-text" <c:if test="${form.firstnameError}">style="display: inline"</c:if>>${form.firstnameErrMsg}</span>
             <div class="form-row">
                 <label class="form-label" for="lastname-input">
                     Nachname *
                 </label>
-                <input type="text" name="lastname" id="lastname-input" class="form-input">
+                <input type="text" name="lastname" id="lastname-input" class="form-input" value="${form.lastname}">
             </div>
+			<span class="error-text" <c:if test="${form.lastnameError}">style="display: inline"</c:if>>${form.lastnameErrMsg}</span>            
             <div class="form-row">
                 <label class="form-label" for="dateofbirth-input">
                     Geburtsdatum *
                 </label>
-                <input type="text" name="dateofbirth" id="dateofbirth-input" class="form-input">
+                <input type="text" name="dateofbirth" id="dateofbirth-input" class="form-input" value="${form.dateofbirth}">
             </div>
+			<span class="error-text" <c:if test="${form.dateofbirthError}">style="display: inline"</c:if>>${form.dateofbirthErrMsg}</span>  
             <div class="form-row">
                 <label class="form-label" for="email-input">
                     Email *
                 </label>
-                <input type="text" name="email" id="email-input" class="form-input">
+                <input type="text" name="email" id="email-input" class="form-input" value="${form.email}">
             </div>
+            <span class="error-text" <c:if test="${form.emailError}">style="display: inline"</c:if>>${form.emailErrMsg}</span>          
             <div class="form-row">
                 <label class="form-label" for="password-input">
                     Passwort *
                 </label>
-                <input type="password" name="password" id="password-input" class="form-input">
+                <input type="password" name="password" id="password-input" class="form-input" value="${form.password}">
             </div>
+            <span class="error-text" <c:if test="${form.passwordError}">style="display: inline"</c:if>>${form.passwordErrMsg}</span> 
         </fieldset>
 
         <fieldset>
