@@ -65,7 +65,9 @@ public class ProductService {
                         }
                         ServiceFactory.getUserService().updateUser(user);
                     }
-                    ServiceFactory.getNotifierService().sendAuctionToBigBidBoard(product);
+                    NotifierService notifierService = ServiceFactory.getNotifierService();
+                    String id = notifierService.sendAuctionToBigBidBoard(product);
+                    notifierService.postTweet(id,product);
                 }
                 this.updateProduct(product);
             }

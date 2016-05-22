@@ -8,6 +8,7 @@ public abstract class ServiceFactory {
     private static NotifierService notifierService;
     private static ComputerUserService computerUserService;
     private static UserService userService;
+    private static BidService bidService;
 
     private static EntityManagerFactory emf;
 
@@ -35,7 +36,7 @@ public abstract class ServiceFactory {
     public static ComputerUserService getComputerUserService() {
         if (computerUserService == null) {
             computerUserService = new ComputerUserService(
-                    new BidService(),
+                    getBidService(),
                     getProductService()
             );
         }
@@ -47,5 +48,12 @@ public abstract class ServiceFactory {
             userService = new UserService();
         }
         return userService;
+    }
+
+    public static BidService getBidService() {
+        if (bidService == null) {
+            bidService = new BidService();
+        }
+        return bidService;
     }
 }

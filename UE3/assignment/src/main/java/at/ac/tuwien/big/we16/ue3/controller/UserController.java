@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 public class UserController {
     private final UserService userService;
@@ -47,43 +48,33 @@ public class UserController {
     			request.getParameter("streetAndNumber"),
     			request.getParameter("postcodeAndCity"),
     			request.getParameter("country"));
-   
-    	
-    	
-    	
-    	
-    	
-    		
-    		
-  
-    	
+
     	if(!isvalid) {
 	    	request.setAttribute("form", form);
 	    	request.getRequestDispatcher("./views/registration.jsp").forward(request, response);
     	}
     	else {
+			Date datum = null;
     		SimpleDateFormat dateformat = new SimpleDateFormat("dd.MM.yyyy");
     		try {
-    			Date datum = dateformat.parse(request.getParameter("dateofbirth"));
+    			datum = dateformat.parse(request.getParameter("dateofbirth"));
     		}
     		catch (Exception e) {
     			e.printStackTrace();
     		}
     		
-	    	User user = new User();
-	    	/*
-	    			007,
+	    	User user = new User(
+					UUID.randomUUID().toString(),
 	    			request.getParameter("salutation"),
 	    			request.getParameter("firstname"),
 	    			request.getParameter("lastname"),
 	    			request.getParameter("email"),
 	    			request.getParameter("password"),
 	    			datum,
-	    			1500,
+	    			150000,
 	    			0,
 	    			0,
 	    			0);
-	    	*/
 	        this.userService.createUser(user);
 	        this.authService.login(request.getSession(), user);
 	        response.sendRedirect("/");

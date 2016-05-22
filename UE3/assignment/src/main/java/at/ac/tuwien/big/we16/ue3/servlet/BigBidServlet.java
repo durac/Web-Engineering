@@ -34,12 +34,12 @@ public class BigBidServlet extends HttpServlet {
     private AuthController authController;
     private UserController userController;
     private AuthService authService;
-
     @Override
     public void init() {
         UserService userService = ServiceFactory.getUserService();
+        BidService bidService = ServiceFactory.getBidService();
         this.authService = new AuthService(userService);
-        this.productController = new ProductController(ServiceFactory.getProductService(), this.authService, new BidService());
+        this.productController = new ProductController(ServiceFactory.getProductService(), this.authService, bidService);
         this.authController = new AuthController(this.authService);
         this.userController = new UserController(userService, this.authService);
         (new DataGenerator()).generateData();

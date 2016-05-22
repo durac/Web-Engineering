@@ -4,17 +4,25 @@ import at.ac.tuwien.big.we16.ue3.exception.UserNotFoundException;
 import at.ac.tuwien.big.we16.ue3.model.Bid;
 import at.ac.tuwien.big.we16.ue3.model.Product;
 import at.ac.tuwien.big.we16.ue3.model.User;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import twitter4j.Status;
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
+import twitter4j.conf.ConfigurationBuilder;
 
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -89,8 +97,9 @@ public class NotifierService {
         try{
             request = new HttpPost(BIGBIDBOARDURL);
 
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
             StringEntity json =new StringEntity("{\"name\":\""+p.getHighestBid().getUser().getFullName()+"\",\"product\":\""+p.getName()+"\"," +
-                    "\"price\":\""+p.getHighestBid().getConvertedAmount()+"\",\"date\":\""+p.getAuctionEnd()+"\"} ");
+                    "\"price\":\""+p.getHighestBid().getConvertedAmount()+"\",\"date\":\""+sdf.format(p.getAuctionEnd())+"\"} ");
 
             request.addHeader("Content-Type", "application/json");
             request.addHeader("Accept", "application/json");
@@ -110,11 +119,31 @@ public class NotifierService {
             while ((line = rd.readLine()) != null) {
                 result.append(line);
             }
-            System.out.println(result);
+            JsonObject jsonObject = new Gson().fromJson(result.toString(), JsonObject.class);
+            id = jsonObject.get("id").getAsString();
+            System.out.println(id);
         } catch (IOException e) {
             System.err.println("Fehler bei der Verwendung von BigBidBoard");
         }
         return id;
+    }
+
+    public void postTweet(String uuid, Product p){
+        try {
+            ConfigurationBuilder cb = new ConfigurationBuilder();
+            cb.setDebugEnabled(true)
+                    .setOAuthConsumerKey("GZ6tiy1XyB9W0P4xEJudQ")
+                    .setOAuthConsumerSecret("gaJDlW0vf7en46JwHAOkZsTHvtAiZ3QUd2mD1x26J9w")
+                    .setOAuthAccessToken("1366513208-MutXEbBMAVOwrbFmZtj1r4Ih2vcoHGHE2207002")
+                    .setOAuthAccessTokenSecret("RMPWOePlus3xtURWRVnv1TgrjTyK7Zk33evp4KKyA");
+            Twitter twitter = new TwitterFactory(cb.build()).getInstance();
+
+            TwitterStatusMessage message = new TwitterStatusMessage(p.getHighestBid().getUser().getFullName(),uuid,p.getAuctionEnd());
+            Status status = twitter.updateStatus(message.getTwitterPublicationString());
+            System.out.println(status.getText());
+        } catch (TwitterException e) {
+            System.err.println("Fehler bei der Verwendung von TwitterAPI");
+        }
     }
 
     private interface Visitor {

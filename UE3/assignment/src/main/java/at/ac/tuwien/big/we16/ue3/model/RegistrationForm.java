@@ -1,13 +1,12 @@
 package at.ac.tuwien.big.we16.ue3.model;
 
-import java.util.Date;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.List;
-import java.util.regex.Pattern;
+import at.ac.tuwien.big.we16.ue3.exception.UserNotFoundException;
+import at.ac.tuwien.big.we16.ue3.service.ServiceFactory;
+
 import java.text.ParseException;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.regex.Pattern;
 
 /* This class is used as a Javabean to show dynamic error messages in
  * the registration.jsp. It also performs the validation of the registration form.
@@ -423,7 +422,7 @@ public class RegistrationForm {
 		else {
 			this.salutationError = true;
 			this.formHasError = true;
-			this.salutationErrMsg = "Ungültige Anrede.";
+			this.salutationErrMsg = "UngÃ¼ltige Anrede.";
 		}
 		
 		
@@ -456,7 +455,7 @@ public class RegistrationForm {
 			if(datum == null) {
 				this.dateofbirthError = true;
 				this.formHasError = true;
-				this.dateofbirthErrMsg = "Bitte geben Sie ein gültiges Datum der Form tt.mm.jjjj ein.";
+				this.dateofbirthErrMsg = "Bitte geben Sie ein gÃ¼ltiges Datum der Form tt.mm.jjjj ein.";
 			}
 			else {
 				Calendar calendar = GregorianCalendar.getInstance();
@@ -476,17 +475,24 @@ public class RegistrationForm {
 		catch(ParseException e) {
 			this.dateofbirthError = true;
 			this.formHasError = true;
-			this.dateofbirthErrMsg = "Bitte geben Sie ein gültiges Datum der Form tt.mm.jjjj ein.";
+			this.dateofbirthErrMsg = "Bitte geben Sie ein gÃ¼ltiges Datum der Form tt.mm.jjjj ein.";
 		}
 		
 		/* validating email */
 		if(Pattern.matches("^\\S+@\\S+\\.\\S+$", email)) {
-			this.emailError = false;
+			try {
+				ServiceFactory.getUserService().getUserByEmail(email);
+				this.emailError = true;
+				this.formHasError = true;
+				this.emailErrMsg = "Angegebene Email-Adresse wird bereits verwendet.";
+			} catch (UserNotFoundException e) {
+				this.emailError = false;
+			}
 		}
 		else {
 			this.emailError = true;
 			this.formHasError = true;
-			this.emailErrMsg = "Bitte geben Sie eine gültige Email-Adresse ein.";
+			this.emailErrMsg = "Bitte geben Sie eine gÃ¼ltige Email-Adresse ein.";
 		}
 		
 		

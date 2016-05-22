@@ -17,6 +17,7 @@ public class ShutdownListener implements ServletContextListener {
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
         ServiceFactory.getProductService().close();
         ServiceFactory.getUserService().close();
+        ServiceFactory.getBidService().close();
         ServiceFactory.getNotifierService().stop();
         ServiceFactory.getComputerUserService().stopAll();
     }
